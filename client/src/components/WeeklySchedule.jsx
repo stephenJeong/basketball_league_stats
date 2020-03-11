@@ -1,6 +1,6 @@
 import React from 'react';
 
-function WeeklySchedule ({ props }) {
+const WeeklySchedule = ({ props }) => {
   return (
     <div className="w-sched">
       <div className="w-sched-item w-sched-date">
