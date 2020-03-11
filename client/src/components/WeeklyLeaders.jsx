@@ -1,10 +1,21 @@
 import React from 'react';
 
-function WeeklyLeaders ({ props }) {
+const WeeklyLeaders = ({ player }) => {
   return (
-    <div>
-      Weekly Leaders
-    </div>
+    <tr>
+      <td>
+         {player.name}
+      </td>
+      <td>
+        {player.team}
+      </td>
+      <td>
+        {player.points}
+      </td>
+      <td>
+        {player.threePts}
+      </td>
+    </tr>
   )
 };
 
