@@ -1,6 +1,6 @@
 import React from 'react';
 import Announcements from './Announcements.jsx';
-import WeeklyLeaders from './WeeklyLeaders.jsx';
+import WeeklyLeadersView from './WeeklyLeadersView.jsx';
 
 function Hero ({ props }) {
   return (
@@ -9,7 +9,7 @@ function Hero ({ props }) {
         <Announcements />
       </div>
       <div>
-        <WeeklyLeaders />
+        <WeeklyLeadersView />
       </div>
     </div>
   )
