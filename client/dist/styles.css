@@ -88,3 +88,12 @@ body {
   color: #5e7082;
 }
 /*  End weekly schedule styles */
+
+#hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto;
+  column-gap: 50px;
+  padding: 75px 50px 75px 30px;
+}
+

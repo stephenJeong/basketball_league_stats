@@ -1,8 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 import axios from 'axios';
-import Navbar from './components/Navbar.jsx'
-import WeeklySchedule from './components/WeeklySchedule.jsx'
+import Navbar from './components/Navbar.jsx';
+import WeeklySchedule from './components/WeeklySchedule.jsx';
+import Hero from './components/Hero.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,9 +14,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='container'>
+      <div className="container">
         <Navbar />
         <WeeklySchedule />
+        <Hero />
       </div>
     )
   }
