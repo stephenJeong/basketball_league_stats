@@ -1,0 +1,122 @@
+[
+  {
+    "playerName": "Shaquille O'Neal",
+    "team": "Lakers",
+    "totalPoints": 100,
+    "totalThreePts": 10,
+    "totalFGs": 50,
+    "totalFTs": 10
+  },
+  {
+    "playerName": "Kobe Bryant",
+    "team": "Lakers",
+    "totalPoints": 100,
+    "totalThreePts": 10,
+    "totalFGs": 50,
+    "totalFTs": 10
+  },
+  {
+    "playerName": "Derek Fisher",
+    "team": "Lakers",
+    "totalPoints": 79,
+    "totalThreePts": 3,
+    "totalFGs": 3,
+    "totalFTs": 3
+  },
+  {
+    "playerName": "Robert Horry",
+    "team": "Lakers",
+    "totalPoints": 12,
+    "totalThreePts": 1,
+    "totalFGs": 1,
+    "totalFTs": 3
+  },
+  {
+    "playerName": "Trevor Ariza",
+    "team": "Lakers",
+    "totalPoints": 39,
+    "totalThreePts": 5,
+    "totalFGs": 29,
+    "totalFTs": 5
+  },
+  {
+    "playerName": "Paul Pierce",
+    "team": "Celtics",
+    "totalPoints": 1,
+    "totalThreePts": 0,
+    "totalFGs": 0,
+    "totalFTs": 0
+  },
+  {
+    "playerName": "Rajon Rondo",
+    "team": "Celtics",
+    "totalPoints": 1,
+    "totalThreePts": 0,
+    "totalFGs": 0,
+    "totalFTs": 0
+  },
+  {
+    "playerName": "Kevin Garnett",
+    "team": "Celtics",
+    "totalPoints": 1,
+    "totalThreePts": 0,
+    "totalFGs": 0,
+    "totalFTs": 0
+  },
+  {
+    "playerName": "Ray Allen",
+    "team": "Celtics",
+    "totalPoints": 1,
+    "totalThreePts": 0,
+    "totalFGs": 0,
+    "totalFTs": 0
+  },
+  {
+    "playerName": "Kendrick Perkins",
+    "team": "Celtics",
+    "totalPoints": 1,
+    "totalThreePts": 0,
+    "totalFGs": 0,
+    "totalFTs": 0
+  },
+  {
+    "playerName": "Michael Jordan",
+    "team": "Bulls",
+    "totalPoints": 150,
+    "totalThreePts": 10,
+    "totalFGs": 39,
+    "totalFTs": 40
+  },
+  {
+    "playerName": "Scottie Pippen",
+    "team": "Bulls",
+    "totalPoints": 150,
+    "totalThreePts": 10,
+    "totalFGs": 39,
+    "totalFTs": 40
+  },
+  {
+    "playerName": "Dennis Rodman",
+    "team": "Bulls",
+    "totalPoints": 150,
+    "totalThreePts": 10,
+    "totalFGs": 39,
+    "totalFTs": 40
+  },
+  {
+    "playerName": "John Salley",
+    "team": "Bulls",
+    "totalPoints": 150,
+    "totalThreePts": 10,
+    "totalFGs": 39,
+    "totalFTs": 40
+  },
+  {
+    "playerName": "Randy Brown",
+    "team": "Bulls",
+    "totalPoints": 150,
+    "totalThreePts": 10,
+    "totalFGs": 39,
+    "totalFTs": 40
+  }
+]
