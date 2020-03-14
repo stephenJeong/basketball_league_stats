@@ -38,7 +38,7 @@ const WeeklyLeadersView = ({ props }) => {
           </tr>
         {playerList.map(elem => {
           return (
-            <WeeklyLeaders player={elem} />
+            <WeeklyLeaders player={elem} key={elem.name} />
           )
         })}
         </tbody>
