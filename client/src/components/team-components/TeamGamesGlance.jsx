@@ -1,4 +1,5 @@
 import React from 'react';
+import TeamGame from './TeamGame.jsx';
 
 const TeamGamesGlance = ({ listPropsHere }) => {
   return (
