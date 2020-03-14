@@ -1,5 +1,5 @@
 import React from 'react';
-import TeamStats from './TeamStats.jsx';
+import TeamStats from './TeamStats.jsx.js';
 
 const TeamOverview = ({ listPropsHere }) => {
   return (
