@@ -5,9 +5,15 @@ body {
 
 h2 {
   text-transform: uppercase;
+  margin: 0;
 }
 
-.navbar {
+hr {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.navBar {
   display: grid;
   grid-template-columns: 100px 100px 100px 100px 100px 1fr;
   grid-template-rows: auto;
@@ -16,7 +22,7 @@ h2 {
   color: #fff;
 }
 
-.navbar-item {
+.navBar-item {
   grid-column-start: 1 / span 1;
   grid-row: 1 / 1;
   margin: auto 50px auto 50px;
@@ -126,4 +132,35 @@ h2 {
 
 .hero-img {
   max-width: 100%;
+}
+
+#teamsView {
+  display: grid;
+  grid-template-columns: 10% 20% 60% 10%;
+  grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+}
+
+#tv-navBar {
+  grid-column: 1 / 5;
+  grid-row: 1 / 1;
+}
+
+#tv-teamList {
+  grid-column: 2 / 2;
+  grid-row: 2 / 5;
+}
+
+#tv-teamOverview {
+  grid-column: 3 / 3;
+  grid-row: 2 / 2;
+}
+
+#tv-teamGames {
+  grid-column: 3 / 3;
+  grid-row: 3 / 3;
+}
+
+#tv-teamPlayers {
+  grid-column: 3 / 3;
+  grid-row: 4 / 4;
 }

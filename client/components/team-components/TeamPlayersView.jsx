@@ -1,5 +1,5 @@
 import React from 'react';
-import TeamPlayers from './TeamPlayers.jsx.js';
+import TeamPlayers from './TeamPlayers.jsx';
 
 const TeamPlayersView = ({ listPropsHere }) => {
   return (

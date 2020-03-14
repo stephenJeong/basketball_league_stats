@@ -1,16 +1,16 @@
 import React from 'react';
 
-const Navbar = ({ props }) => {
+const NavBar = ({ props }) => {
   return (
-    <div className="navbar">
-      <div className="navbar-item">Home</div>
-      <div className="navbar-item">Schedule</div>
-      <div className="navbar-item">Teams</div>
-      <div className="navbar-item">Standings</div>
-      <div className="navbar-item">Stats</div>
-      <div className="navbar-item"></div>
+    <div className="navBar">
+      <div className="navBar-item">Home</div>
+      <div className="navBar-item">Schedule</div>
+      <div className="navBar-item">Teams</div>
+      <div className="navBar-item">Standings</div>
+      <div className="navBar-item">Stats</div>
+      <div className="navBar-item"></div>
     </div>
   )
 };
 
-export default Navbar;
+export default NavBar;

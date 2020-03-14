@@ -1,12 +1,12 @@
 import React from 'react';
-import Navbar from './Navbar.jsx';
+import NavBar from './NavBar.jsx';
 import WeeklySchedule from './WeeklySchedule.jsx';
 import Hero from './Hero.jsx';
 
 const Landing = ({ props }) => {
   return (
     <div>
-      <Navbar />
+      <NavBar />
       <WeeklySchedule />
       <Hero />
     </div>

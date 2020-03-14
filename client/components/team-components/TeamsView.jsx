@@ -1,13 +1,28 @@
 import React from 'react';
-import TeamList from './TeamList.jsx.js';
-import TeamOverview from './TeamOverview.jsx.js';
-import TeamGamesGlance from './TeamGamesGlance.jsx.js';
-import TeamPlayersView from './TeamPlayersView.jsx.js';
+import NavBar from '../NavBar.jsx';
+import TeamList from './TeamList.jsx';
+import TeamOverview from './TeamOverview.jsx';
+import TeamGamesGlance from './TeamGamesGlance.jsx';
+import TeamPlayersView from './TeamPlayersView.jsx';
 
 const TeamsView = ({ listPropsHere }) => {
   return (
-    <div>
-      Teams View
+    <div id="teamsView">
+      <div id="tv-navBar">
+        <NavBar />
+      </div>
+      <div id="tv-teamList">
+        <TeamList />
+      </div>
+      <div id="tv-teamOverview">
+        <TeamOverview />
+      </div>
+      <div id="tv-teamGames">
+        <TeamGamesGlance />
+      </div>
+      <div id="tv-teamPlayers">
+        <TeamPlayersView />
+      </div>
     </div>
   )
 };
