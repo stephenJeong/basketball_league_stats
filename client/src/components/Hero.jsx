@@ -5,10 +5,10 @@ import WeeklyLeadersView from './WeeklyLeadersView.jsx';
 function Hero ({ props }) {
   return (
     <div id="hero">
-      <div>
+      <div id="announcements">
         <Announcements />
       </div>
-      <div>
+      <div id="weeklyLeaders">
         <WeeklyLeadersView />
       </div>
     </div>
