@@ -1,6 +1,7 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: 100;
+  background-color: #E5E7E9;
 }
 
 h2 {
@@ -163,4 +164,17 @@ hr {
 #tv-teamPlayers {
   grid-column: 3 / 3;
   grid-row: 4 / 4;
+}
+
+.tl-teamName {
+  border-bottom: 1px solid #CCD0D3;
+  padding: 10px;
+  color: #0B5BE1;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.teamList {
+  background-color: #fff;
+  padding: 0px 5px 0px 5px;
 }

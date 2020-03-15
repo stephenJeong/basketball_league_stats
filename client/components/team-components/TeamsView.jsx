@@ -4,6 +4,7 @@ import TeamList from './TeamList.jsx';
 import TeamOverview from './TeamOverview.jsx';
 import TeamGamesGlance from './TeamGamesGlance.jsx';
 import TeamPlayersView from './TeamPlayersView.jsx';
+import data from '../../data.json';
 
 const TeamsView = ({ listPropsHere }) => {
   return (
@@ -12,16 +13,16 @@ const TeamsView = ({ listPropsHere }) => {
         <NavBar />
       </div>
       <div id="tv-teamList">
-        <TeamList />
+        <TeamList teams={data} />
       </div>
       <div id="tv-teamOverview">
-        <TeamOverview />
+        <TeamOverview teams={data} />
       </div>
       <div id="tv-teamGames">
-        <TeamGamesGlance />
+        <TeamGamesGlance teams={data} />
       </div>
       <div id="tv-teamPlayers">
-        <TeamPlayersView />
+        <TeamPlayersView teams={data} />
       </div>
     </div>
   )
