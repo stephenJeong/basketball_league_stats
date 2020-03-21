@@ -8,11 +8,18 @@ const TeamList = ({ teams }) => {
     if (!uniqueTeams.includes(elem.team)) {
       uniqueTeams.push(elem.team);
     }
-  })
+  });
+
+  let sortedTeams = uniqueTeams.sort((a, b) => {
+    if (a < b) { return -1; }
+    if (a > b) { return 1; }
+    return 0;
+  });
+
 
   return (
     <div className="teamList">
-      {uniqueTeams.map(team => {
+      {sortedTeams.map(team => {
         return (
           <TeamName name={team} />
         )
