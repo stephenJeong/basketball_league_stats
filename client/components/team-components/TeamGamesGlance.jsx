@@ -3,8 +3,9 @@ import TeamGame from './TeamGame.jsx';
 
 const TeamGamesGlance = ({ listPropsHere }) => {
   return (
-    <div>
-      Team Games at a Glance
+    <div id="games-glance">
+      Games at a Glance
+      <TeamGame />
     </div>
   )
 };
