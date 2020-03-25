@@ -226,6 +226,15 @@ hr {
 
 #games-glance {
   background-color: #fff;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+}
+
+#gg-title {
+  grid-column: 1 / span 2;
+  grid-row: 1 / 1;
+  padding: 10px 0px 10px 20px;
 }
 
 #gg-game-sched {
@@ -234,8 +243,23 @@ hr {
   grid-template-rows: auto auto;
   text-transform: uppercase;
   text-align: center;
+  height: 100px;
+}
+
+#gg-game-sched div {
+  margin: auto;
 }
 
 #gg-game-date {
   text-align: center;
+}
+
+.gg-score {
+  font-size: 35px;
+  /* margin: auto; */
+}
+
+.gg-status {
+  font-size: 20px;
+  font-weight: bold;
 }
