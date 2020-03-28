@@ -7,8 +7,8 @@ import TeamsView from './team-components/TeamsView.jsx';
 const App = () => {
   return (
     <BrowserRouter>
-      <Route path='/' component={TeamsView} />
-      {/* <Route path='/' component={Landing} /> */}
+      {/* <Route path='/' component={TeamsView} /> */}
+      <Route path='/' component={Landing} />
     </BrowserRouter>
   );
 };
