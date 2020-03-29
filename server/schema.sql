@@ -15,8 +15,8 @@ CREATE TABLE 'team' (
 CREATE TABLE 'player' (
   'id' int NOT NULL AUTO_INCREMENT,
   'fullName' varchar(255) NOT NULL,
-  'picture' varchar (255),
-  'stats' varchar (255),
+  'picture' varchar (255) NOT NULL,
+  'stats_id' int NOT NULL,
   'team_id' int NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (team_id) REFERENCES team(id)
