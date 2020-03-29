@@ -14,3 +14,7 @@ connection.connect((err) => {
     console.log('mySql connected successfully');
   }
 });
+
+module.exports.connection = connection;
+
+// const retrieve = 'SELECT * FROM team WHERE ____';
