@@ -53,3 +53,4 @@ jspm_packages/
 .cache
 
 bundle.js
+credentials
