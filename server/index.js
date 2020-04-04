@@ -82,27 +82,50 @@ function getNewToken(oAuth2Client, callback) {
 }
 
 /**
- * Prints the names and majors of students in a sample spreadsheet:
  * @see https://docs.google.com/spreadsheets/d/1uyoyCE2tc3tnPO7GeVGUUbjCR2-IwDu-HSodzpYV5og/edit#gid=1444631509
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
 function dataPull(auth) {
   const sheets = google.sheets({version: 'v4', auth});
-  sheets.spreadsheets.values.get({
+  sheets.spreadsheets.values.batchGet({
     spreadsheetId: '1uyoyCE2tc3tnPO7GeVGUUbjCR2-IwDu-HSodzpYV5og',
-    range: 'March 1, Game 4!J5:S14',
-  }, (err, res) => {
-    if (err) return console.log('The API returned an error: ' + err);
-    const rows = res.data.values;
-    if (rows.length) {
-      console.log('Name, Points:');
-      // Print columns A and E, which correspond to indices 0 and 4.
-      rows.map((row) => {
-        console.log(`${row[0]}, ${row[4]}`);
-      });
-    } else {
-      console.log('No data found.');
-    }
+    ranges: ['Rosters and Schedule!C2:L14', 'Team Stats!A2:D11','Player Stats!A2:N103']
+    }, (err, res) => {
+      if (err) return console.log('The API returned an error: ' + err);
+      const teams = res.data.valueRanges[0].values;
+      const teamStats = res.data.valueRanges[1].values;
+      const playerStats = res.data.valueRanges[2].values;
+
+      // data we receive back from api is an array of arrays with each array being a row in google sheets
+      /*
+      if (teams.length) {
+        for (let i = 0; i < teams[0].length; i++) {
+          teams.forEach((team) => {
+            console.log(`${team[i]}`)
+          });
+        }
+      } else {
+        console.log('No data found.');
+      }
+
+      if (teamStats.length) {
+        console.log('Team, Wins, Losses, Standing:');
+        teamStats.forEach((team) => {
+          console.log(`${team}`)
+        });
+      } else {
+        console.log('No data found.');
+      }
+
+      if (playerStats.length) {
+        console.log('Team, Wins, Losses, Standing:');
+        playerStats.forEach((player) => {
+          console.log(`${player}`)
+        });
+      } else {
+        console.log('No data found.');
+      }
+      */
   });
 };
 

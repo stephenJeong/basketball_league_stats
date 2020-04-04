@@ -8,7 +8,8 @@ CREATE TABLE 'team' (
   'id' int NOT NULL AUTO_INCREMENT,
   'teamName' varchar (255) NOT NULL,
   'schedule' varchar (255),
-  'record' varchar (255),
+  'wins' int (255) NOT NULL,
+  'losses' int (255) NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -29,8 +30,8 @@ CREATE TABLE 'stats' (
   'fgPct' decimal NOT NULL,
   'threePtPct' decimal NOT NULL,
   `ftPct` decimal NOT NULL,
-  `twoPtMade` integer NOT NULL,
-  `twoPtAttempt` integer NOT NULL,
+  `fgMade` integer NOT NULL,
+  `fgAttempt` integer NOT NULL,
   `threePtMade` integer NOT NULL,
   `threePtAttempt` integer NOT NULL,
   `ftMade` integer NOT NULL,
