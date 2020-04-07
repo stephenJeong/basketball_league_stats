@@ -4,7 +4,7 @@ import TeamList from './TeamList.jsx';
 import TeamOverview from './TeamOverview.jsx';
 import TeamGamesGlance from './TeamGamesGlance.jsx';
 import TeamPlayersView from './TeamPlayersView.jsx';
-import data from '../../data.json';
+import data from '../../../database/data.json';
 
 const TeamsView = ({ listPropsHere }) => {
   return (

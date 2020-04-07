@@ -13,10 +13,6 @@ app.use(express.static('client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get(('', (req, res) => {
-  console.log('here!!')
-}))
-
  // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 // The file token.json stores the user's access and refresh tokens, and is
@@ -85,49 +81,73 @@ function getNewToken(oAuth2Client, callback) {
  * @see https://docs.google.com/spreadsheets/d/1uyoyCE2tc3tnPO7GeVGUUbjCR2-IwDu-HSodzpYV5og/edit#gid=1444631509
  * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
  */
+let teams = [];
+let teamStats = [];
+let playerStats = [];
+
 function dataPull(auth) {
   const sheets = google.sheets({version: 'v4', auth});
-  sheets.spreadsheets.values.batchGet({
-    spreadsheetId: '1uyoyCE2tc3tnPO7GeVGUUbjCR2-IwDu-HSodzpYV5og',
-    ranges: ['Rosters and Schedule!C2:L14', 'Team Stats!A2:D11','Player Stats!A2:N103']
-    }, (err, res) => {
-      if (err) return console.log('The API returned an error: ' + err);
-      const teams = res.data.valueRanges[0].values;
-      const teamStats = res.data.valueRanges[1].values;
-      const playerStats = res.data.valueRanges[2].values;
+    sheets.spreadsheets.values.batchGet({
+      spreadsheetId: '1uyoyCE2tc3tnPO7GeVGUUbjCR2-IwDu-HSodzpYV5og',
+      ranges: ['Rosters and Schedule!C2:L14', 'Team Stats!A2:D11','Player Stats!A2:N103']
+      }, (err, res) => {
+        if (err) return console.log('The API returned an error: ' + err);
+        teams = res.data.valueRanges[0].values;
+        teamStats = res.data.valueRanges[1].values;
+        playerStats = res.data.valueRanges[2].values;
+        app.get(('/', (req, res) => {
+        
+        res.send(teams);
+        }));
 
-      // data we receive back from api is an array of arrays with each array being a row in google sheets
-      /*
-      if (teams.length) {
-        for (let i = 0; i < teams[0].length; i++) {
-          teams.forEach((team) => {
-            console.log(`${team[i]}`)
-          });
+        // data we receive back from api is an array of arrays with each array being a row in google sheets
+        /* uncomment out when you're ready to use these functions to get data from google sheets
+        if (teams.length) {
+          for (let i = 0; i < teams[0].length; i++) {
+            teams.forEach((team) => {
+              console.log(`${team[i]}`)
+            });
+          }
+        } else {
+          console.log('No data found.');
         }
-      } else {
-        console.log('No data found.');
-      }
 
-      if (teamStats.length) {
-        console.log('Team, Wins, Losses, Standing:');
-        teamStats.forEach((team) => {
-          console.log(`${team}`)
-        });
-      } else {
-        console.log('No data found.');
-      }
+        if (teamStats.length) {
+          console.log('Team, Wins, Losses, Standing:');
+          teamStats.forEach((team) => {
+            console.log(`${team}`)
+          });
+        } else {
+          console.log('No data found.');
+        }
 
-      if (playerStats.length) {
-        console.log('Team, Wins, Losses, Standing:');
-        playerStats.forEach((player) => {
-          console.log(`${player}`)
-        });
-      } else {
-        console.log('No data found.');
-      }
-      */
-  });
+        if (playerStats.length) {
+          console.log('Team, Wins, Losses, Standing:');
+          playerStats.forEach((player) => {
+            console.log(`${player}`)
+          });
+        } else {
+          console.log('No data found.');
+        }
+        */
+    });
 };
+
+// setTimeout(function () {
+//   console.log(teams)
+// }, 1000)
+
+// the below app.get should only run AFTER getData function returns result
+// app.get(('/', (req, res) => {
+
+
+// }));
+
+
+app.get(('/schedule', (req, res) => {
+
+}));
+
 
 app.listen(PORT, () => {
   console.log(`app listening on port ${PORT}`);
