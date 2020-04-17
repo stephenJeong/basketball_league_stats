@@ -10,13 +10,14 @@ class App extends React.Component {
     super(props);
     this.state = {};
 
-    this.testGet = this.testGet.bind(this);
+    this.getPlayerStats = this.getPlayerStats.bind(this);
   }
 
-  testGet() {
-    axios.get('/api')
+  getPlayerStats() {
+    axios.get('/api/player')
       .then((res) => {
-        console.log(`res from testGet ${res}`)
+        // let data = JSON.stringify(res)
+        console.log(`res from testGet ${JSON.stringify(res.data)}`)
       })
       .catch((err) => {
         console.log(`error while getting data: ${err}`);
@@ -24,7 +25,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.testGet();
+    this.getPlayerStats();
   }
 
   render() {
