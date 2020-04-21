@@ -2,7 +2,7 @@ import React from 'react';
 
 const WeeklyLeaders = ({ player }) => {
   return (
-    <tr>
+    <tr key={player.name}>
       <td>
          {player.name}
       </td>
@@ -10,10 +10,10 @@ const WeeklyLeaders = ({ player }) => {
         {player.team}
       </td>
       <td>
-        {player.points}
+        {player.totalPoints}
       </td>
       <td>
-        {player.threePts}
+        {player.threePt}
       </td>
     </tr>
   )

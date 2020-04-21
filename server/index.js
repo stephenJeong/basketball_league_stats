@@ -14,14 +14,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-const printPlayers = (player) => {
-  console.log(player);
-};
-
 async function getData(index, callback) {
   const doc = new GoogleSpreadsheet('1uyoyCE2tc3tnPO7GeVGUUbjCR2-IwDu-HSodzpYV5og');
   await doc.useServiceAccountAuth(creds);
-
   await doc.loadInfo(); // loads document properties and worksheets
 
   console.log(`Title: ${doc.title}`);

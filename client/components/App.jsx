@@ -17,7 +17,10 @@ class App extends React.Component {
     axios.get('/api/player')
       .then((res) => {
         // let data = JSON.stringify(res)
-        console.log(`res from testGet ${JSON.stringify(res.data)}`)
+        this.setState({
+          playerStats: JSON.stringify(res.data)
+        })
+        // console.log(`res from testGet ${JSON.stringify(res.data)}`)
       })
       .catch((err) => {
         console.log(`error while getting data: ${err}`);
