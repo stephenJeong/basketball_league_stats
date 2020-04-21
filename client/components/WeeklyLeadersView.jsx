@@ -1,6 +1,6 @@
 import React from 'react';
-import WeeklyLeaders from './WeeklyLeaders.jsx';
 import axios from 'axios';
+import WeeklyLeaders from './WeeklyLeaders.jsx';
 
 class WeeklyLeadersView extends React.Component {
   constructor(props) {
@@ -8,11 +8,29 @@ class WeeklyLeadersView extends React.Component {
     this.state = {
       playerStats: [],
       leaders: [],
-      update: false
     };
 
     this.getPlayerStats = this.getPlayerStats.bind(this);
     this.reverseSortPlayers = this.reverseSortPlayers.bind(this);
+  }
+
+  componentDidMount() {
+    this.getPlayerStats();
+  }
+
+  getPlayerStats() {
+    axios.get('/api/player')
+      .then((res) => {
+        const sortedPlayers = this.reverseSortPlayers(res.data);
+        const leaders = sortedPlayers.splice(0, 3);
+        this.setState({
+          playerStats: sortedPlayers,
+          leaders: leaders,
+        });
+      })
+      .catch((err) => {
+        console.log(`error while getting data: ${err}`);
+      });
   }
 
   reverseSortPlayers(arr) {
@@ -20,16 +38,16 @@ class WeeklyLeadersView extends React.Component {
       return arr;
     }
 
-    let pivot = parseInt(arr[Math.floor(Math.random() * arr.length)].totalPoints);
+    const pivot = parseInt(arr[Math.floor(Math.random() * arr.length)].totalPoints, 10);
 
-    let left = [];
-    let equal = [];
-    let right = [];
+    const left = [];
+    const equal = [];
+    const right = [];
 
     for (let elem of arr) {
-      if (parseInt(elem.totalPoints) > pivot) {
+      if (parseInt(elem.totalPoints, 10) > pivot) {
         left.push(elem);
-      } else if (parseInt(elem.totalPoints) < pivot) {
+      } else if (parseInt(elem.totalPoints, 10) < pivot) {
         right.push(elem);
       } else {
         equal.push(elem);
@@ -39,28 +57,8 @@ class WeeklyLeadersView extends React.Component {
     return this.reverseSortPlayers(left).concat(equal).concat(this.reverseSortPlayers(right));
   }
 
-  getPlayerStats() {
-    axios.get('/api/player')
-      .then((res) => {
-        let sortedPlayers = this.reverseSortPlayers(res.data);
-        console.log(sortedPlayers);
-        let leaders = sortedPlayers.splice(0, 3);
-        this.setState({
-          playerStats: sortedPlayers,
-          leaders: leaders
-        });
-      })
-      .catch((err) => {
-        console.log(`error while getting data: ${err}`);
-      })
-  }
-
-  componentDidMount() {
-    this.getPlayerStats();
-  }
-
   render() {
-
+    const { leadersState } = this.state;
     return (
       <div>
         <h2>Weekly Leaders</h2>
@@ -73,19 +71,16 @@ class WeeklyLeadersView extends React.Component {
               <td>Points</td>
               <td>3 Pointers</td>
             </tr>
-          {this.state.leaders.map(elem => {
-            return (
+            {leadersState.map((elem) => (
               <WeeklyLeaders player={elem} key={elem.name} />
-            )
-          })
-          }
+            ),
+            
+            )}
           </tbody>
         </table>
       </div>
-    )
-
+    );
   }
 }
-
 
 export default WeeklyLeadersView;

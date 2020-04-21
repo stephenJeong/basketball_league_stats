@@ -2,7 +2,6 @@ import React from 'react';
 import NavBar from './NavBar.jsx';
 import WeeklySchedule from './WeeklySchedule.jsx';
 import Hero from './Hero.jsx';
-import axios from 'axios';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -15,10 +14,10 @@ class Landing extends React.Component {
       <div>
         <NavBar />
         <WeeklySchedule />
-        <Hero playerStats={this.state.playerStats} />
+        <Hero />
       </div>
     );
   }
-};
+}
 
 export default Landing;
