@@ -58,7 +58,7 @@ class WeeklyLeadersView extends React.Component {
   }
 
   render() {
-    const { leadersState } = this.state;
+    const { leaders } = this.state;
     return (
       <div>
         <h2>Weekly Leaders</h2>
@@ -71,10 +71,10 @@ class WeeklyLeadersView extends React.Component {
               <td>Points</td>
               <td>3 Pointers</td>
             </tr>
-            {leadersState.map((elem) => (
+            {leaders.map((elem) => (
               <WeeklyLeaders player={elem} key={elem.name} />
             ),
-            
+
             )}
           </tbody>
         </table>
