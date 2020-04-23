@@ -67,8 +67,8 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/" render={(routeProps) => (<Landing {...routeProps} playerStats={playerStats} leaders={leaders} />)} />
-          <Route path="/teams" render={(routeProps) => (<TeamsView {...routeProps} playerStats={playerStats} leaders={leaders} />)} />
+          <Route exact path="/" render={(routeProps) => (<Landing {...routeProps} playerStats={playerStats} leaders={leaders} />)} />
+          <Route path="/teams" render={(routeProps) => (<TeamsView {...routeProps} />)} />
         </Switch>
       </BrowserRouter>
     );
