@@ -3,21 +3,12 @@ import NavBar from './NavBar.jsx';
 import WeeklySchedule from './WeeklySchedule.jsx';
 import Hero from './Hero.jsx';
 
-class Landing extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <div>
-        <NavBar />
-        <WeeklySchedule />
-        <Hero />
-      </div>
-    );
-  }
-}
+const Landing = ({ leaders }) => (
+  <div>
+    <NavBar />
+    <WeeklySchedule />
+    <Hero leaders={leaders}  />
+  </div>
+);
 
 export default Landing;

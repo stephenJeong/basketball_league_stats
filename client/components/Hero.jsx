@@ -2,13 +2,13 @@ import React from 'react';
 import Announcements from './Announcements.jsx';
 import WeeklyLeadersView from './WeeklyLeadersView.jsx';
 
-const Hero = () => (
+const Hero = ({ leaders }) => (
   <div id="hero">
     <div id="announcements">
       <Announcements />
     </div>
     <div id="weeklyLeaders">
-      <WeeklyLeadersView />
+      <WeeklyLeadersView leaders={leaders} />
     </div>
   </div>
 );
