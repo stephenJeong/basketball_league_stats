@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Landing from './Landing.jsx';
@@ -75,4 +75,4 @@ class App extends React.Component {
   }
 }
 
-render(<App />, document.getElementById('app'));
+export default App;

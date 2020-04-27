@@ -1,18 +1,29 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const { promisify } = require('util');
 const creds = require('../client_secret.json');
 const cors = require('cors');
-const db = require('../database/index.js');
+const ReactDOMServer = require('react-dom/server');
+const { StaticRouter } = require('react-router');
+// const db = require('../database/index.js');
 const PORT = 3000;
+
+const routes = require('../client/routes/index');
+const teams = require('../client/routes/teams');
+const App = require('../client/components/App')
 
 const app = express();
 
-app.use(express.static('./client/dist'));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'client/dist/index.html'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+app.use(express.static('./client/dist'));
+
+app.use('/', routes);
+app.use('/teams', teams);
 
 async function getData(index, callback) {
   const doc = new GoogleSpreadsheet('1uyoyCE2tc3tnPO7GeVGUUbjCR2-IwDu-HSodzpYV5og');
@@ -35,6 +46,13 @@ const playerStats = (callback) => {
     callback(data);
   });
 };
+
+app.get('*', (req, res) => {
+  const context = {};
+  res.render('layout', {
+    content: ReactDOMServer.renderToString
+  })
+})
 
 app.get('/api/player', (req, res) => {
   playerStats((stats) => {
@@ -62,10 +80,25 @@ app.get('/api/player', (req, res) => {
 
     res.send(allPlayers);
   })
+
 });
 
 app.get('/schedule', (req, res) => {
 
+});
+
+app.use((req, res, next) => {
+  let err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+app.use((req, res, next) => {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {},
+  });
 });
 
 app.listen(PORT, () => {
