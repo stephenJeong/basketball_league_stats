@@ -9,9 +9,7 @@ const { StaticRouter } = require('react-router');
 // const db = require('../database/index.js');
 const PORT = 3000;
 
-// const routes = require('../client/routes/index');
-// const teams = require('../client/routes/teams');
-// const App = require('../client/components/App')
+const App = require('../client/components/App')
 
 const app = express();
 
@@ -49,9 +47,13 @@ const playerStats = (callback) => {
 app.get('*', (req, res) => {
   const context = {};
   res.render('layout', {
-    content: ReactDOMServer.renderToString
-  })
-})
+    content: ReactDOMServer.renderToString(
+      <StaticRouter location={req.url} context={context}>
+        <App />
+      </StaticRouter>
+    )
+  });
+});
 
 app.get('/api/player', (req, res) => {
   playerStats((stats) => {

@@ -2,9 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { render } from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import routes from '../routes';
 
-import Landing from './Landing.jsx';
-import TeamsView from './team-components/TeamsView.jsx';
+// import Landing from './Landing.jsx';
+// import TeamsView from './team-components/TeamsView.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -67,8 +68,11 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" render={(routeProps) => (<Landing {...routeProps} playerStats={playerStats} leaders={leaders} />)} />
-          <Route path="/teams" render={(routeProps) => (<TeamsView {...routeProps} />)} />
+          {routes.map((route, idx) => (
+            <Route exact key={idx} {...route} />
+          ))}
+          {/* <Route exact path="/" render={(routeProps) => (<Landing {...routeProps} playerStats={playerStats} leaders={leaders} />)} />
+          <Route path="/teams" render={(routeProps) => (<TeamsView {...routeProps} />)} /> */}
         </Switch>
       </BrowserRouter>
     );
