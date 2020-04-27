@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const creds = require('../client_secret.json');
@@ -8,22 +9,20 @@ const { StaticRouter } = require('react-router');
 // const db = require('../database/index.js');
 const PORT = 3000;
 
-const routes = require('../client/routes/index');
-const teams = require('../client/routes/teams');
-const App = require('../client/components/App')
+// const routes = require('../client/routes/index');
+// const teams = require('../client/routes/teams');
+// const App = require('../client/components/App')
 
 const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'client/dist/index.html'));
+app.use('/static', express.static('../client/dist/'))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.static('./client/dist'));
-
-app.use('/', routes);
-app.use('/teams', teams);
 
 async function getData(index, callback) {
   const doc = new GoogleSpreadsheet('1uyoyCE2tc3tnPO7GeVGUUbjCR2-IwDu-HSodzpYV5og');

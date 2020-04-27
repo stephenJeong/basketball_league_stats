@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server/index.js",
-    "build": "webpack -d --watch",
+    "build:server": "webpack",
+    "build:client": "webpack -d --watch --config webpack.client.config.js",
+    "build": "npm run build:server && npm run build:client",
     "lint": "eslint *.js client/**/*.jsx"
   },
   "repository": {
@@ -52,6 +54,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
   }
 }
