@@ -1,13 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const { promisify } = require('util');
 const creds = require('../client_secret.json');
-const cors = require('cors');
-const db = require('../database/index.js');
+// const db = require('../database/index.js');
 const PORT = 3000;
 
 const app = express();
+const cors = require('cors');
 
 app.use(express.static('./client/dist'));
 app.use(bodyParser.json());
@@ -31,7 +30,13 @@ async function getData(index, callback) {
 }
 
 const playerStats = (callback) => {
-  getData(2, (data) => {
+  getData(3, (data) => {
+    callback(data);
+  });
+};
+
+const teamStats = (callback) => {
+  getData(4, (data) => {
     callback(data);
   });
 };
@@ -61,6 +66,27 @@ app.get('/api/player', (req, res) => {
     })
 
     res.send(allPlayers);
+  })
+});
+
+app.get('/api/team', (req, res) => {
+  teamStats((stats) => {
+    let allTeams = [];
+    let teamData = {};
+    stats.forEach((team) => {
+      teamData.name = team.name;
+      teamData.wins = team.wins;
+      teamData.losses = team.losses;
+      teamData.standing = team.standing;
+      teamData.ppg = team.ppg;
+      teamData.threePg = team.threePg;
+      teamData.ftPg = team.ftPg;
+
+      allTeams.push(teamData);
+      teamData = {};
+    });
+
+    res.send(allTeams);
   })
 });
 

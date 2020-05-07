@@ -12,14 +12,17 @@ class App extends React.Component {
     this.state = {
       playerStats: [],
       leaders: [],
+      teamStats: [],
     };
 
     this.getPlayerStats = this.getPlayerStats.bind(this);
     this.reverseSortPlayers = this.reverseSortPlayers.bind(this);
+    this.getTeamStats = this.getTeamStats.bind(this);
   }
 
   componentDidMount() {
     this.getPlayerStats();
+    this.getTeamStats();
   }
 
   getPlayerStats() {
@@ -33,7 +36,7 @@ class App extends React.Component {
         });
       })
       .catch((err) => {
-        console.log(`error while getting data: ${err}`);
+        console.log(`error while getting player data: ${err}`);
       });
   }
 
@@ -61,14 +64,27 @@ class App extends React.Component {
     return this.reverseSortPlayers(left).concat(equal).concat(this.reverseSortPlayers(right));
   }
 
+  getTeamStats() {
+    axios.get('/api/team')
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          teamStats: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(`error while getting team data: ${err}`);
+      });
+  }
+
   render() {
-    let { playerStats, leaders } = this.state;
+    let { playerStats, leaders, teamStats } = this.state;
 
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/" render={(routeProps) => (<Landing {...routeProps} playerStats={playerStats} leaders={leaders} />)} />
-          <Route path="/teams" render={(routeProps) => (<TeamsView {...routeProps} />)} />
+          <Route path="/teams" render={(routeProps) => (<TeamsView {...routeProps} teamStats={teamStats} />)} />
         </Switch>
       </BrowserRouter>
     );
