@@ -4,7 +4,6 @@ const TeamGame = ({ week }) => {
   return (
     <div id="gg-game">
       <div id="gg-game-date">
-        {/* {week} {date} */}
         <strong>{week.week}</strong> {week.date}
       </div>
       <div id="gg-game-sched">

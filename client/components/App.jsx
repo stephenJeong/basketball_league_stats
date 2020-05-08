@@ -88,7 +88,7 @@ class App extends React.Component {
             <Navbar />
             <Switch>
               <Route exact path="/" render={(routeProps) => (<Landing {...routeProps} playerStats={playerStats} leaders={leaders} />)} />
-              <Route path="/teams" render={(routeProps) => (<TeamsView {...routeProps} teamStats={teamStats} />)} />
+              <Route path="/teams" render={(routeProps) => (<TeamsView {...routeProps} teamStats={teamStats} playerStats={playerStats} />)} />
             </Switch>
           </div>
         </BrowserRouter>
