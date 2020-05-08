@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Landing from './Landing.jsx';
+import Navbar from './Navbar.jsx';
 import TeamsView from './team-components/TeamsView.jsx';
 
 class App extends React.Component {
@@ -81,12 +82,17 @@ class App extends React.Component {
     let { playerStats, leaders, teamStats } = this.state;
 
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" render={(routeProps) => (<Landing {...routeProps} playerStats={playerStats} leaders={leaders} />)} />
-          <Route path="/teams" render={(routeProps) => (<TeamsView {...routeProps} teamStats={teamStats} />)} />
-        </Switch>
-      </BrowserRouter>
+      <div>
+        <BrowserRouter>
+          <div>
+            <Navbar />
+            <Switch>
+              <Route exact path="/" render={(routeProps) => (<Landing {...routeProps} playerStats={playerStats} leaders={leaders} />)} />
+              <Route path="/teams" render={(routeProps) => (<TeamsView {...routeProps} teamStats={teamStats} />)} />
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </div>
     );
   }
 }
