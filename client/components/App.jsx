@@ -14,16 +14,19 @@ class App extends React.Component {
       playerStats: [],
       leaders: [],
       teamStats: [],
+      schedule: [],
     };
 
     this.getPlayerStats = this.getPlayerStats.bind(this);
     this.reverseSortPlayers = this.reverseSortPlayers.bind(this);
     this.getTeamStats = this.getTeamStats.bind(this);
+    this.getSchedule = this.getSchedule.bind(this);
   }
 
   componentDidMount() {
     this.getPlayerStats();
     this.getTeamStats();
+    this.getSchedule();
   }
 
   getPlayerStats() {
@@ -34,6 +37,18 @@ class App extends React.Component {
         this.setState({
           playerStats: sortedPlayers,
           leaders: leaders,
+        });
+      })
+      .catch((err) => {
+        console.log(`error while getting player data: ${err}`);
+      });
+  }
+
+  getSchedule() {
+    axios.get('/api/schedule')
+      .then((res) => {
+        this.setState({
+          schedule: res.data,
         });
       })
       .catch((err) => {
@@ -68,7 +83,6 @@ class App extends React.Component {
   getTeamStats() {
     axios.get('/api/team')
       .then((res) => {
-        console.log(res.data);
         this.setState({
           teamStats: res.data,
         });
@@ -79,7 +93,7 @@ class App extends React.Component {
   }
 
   render() {
-    let { playerStats, leaders, teamStats } = this.state;
+    let { playerStats, leaders, teamStats, schedule } = this.state;
 
     return (
       <div>
@@ -88,7 +102,7 @@ class App extends React.Component {
             <Navbar />
             <Switch>
               <Route exact path="/" render={(routeProps) => (<Landing {...routeProps} playerStats={playerStats} leaders={leaders} />)} />
-              <Route path="/teams" render={(routeProps) => (<TeamsView {...routeProps} teamStats={teamStats} playerStats={playerStats} />)} />
+              <Route path="/teams" render={(routeProps) => (<TeamsView {...routeProps} teamStats={teamStats} playerStats={playerStats} schedule={schedule} />)} />
             </Switch>
           </div>
         </BrowserRouter>

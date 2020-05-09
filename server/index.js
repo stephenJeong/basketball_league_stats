@@ -29,6 +29,12 @@ async function getData(index, callback) {
   callback(rows);
 }
 
+const teamSchedule = (callback) => {
+  getData(2, (data) => {
+    callback(data);
+  });
+};
+
 const playerStats = (callback) => {
   getData(3, (data) => {
     callback(data);
@@ -47,6 +53,7 @@ app.get('/api/player', (req, res) => {
     let player = {};
     stats.forEach((person) => {
       player.name = person.name;
+      player.photo = person.photo;
       player.team = person.team;
       player.gamesPlayed = person.gamesPlayed;
       player.totalPoints = person.totalPoints;
@@ -90,8 +97,27 @@ app.get('/api/team', (req, res) => {
   })
 });
 
-app.get('/schedule', (req, res) => {
+app.get('/api/schedule', (req, res) => {
+  teamSchedule((data) => {
+    let allSchedule = [];
+    let schedule = {};
 
+
+    data.forEach((row) => {
+      schedule.week = row.week;
+      schedule.date = row.date;
+      schedule.time = row.time;
+      schedule.homeTeam = row.homeTeam;
+      schedule.homeScore = row.homeScore;
+      schedule.awayScore = row.awayScore;
+      schedule.awayTeam = row.awayTeam;
+
+      allSchedule.push(schedule);
+      schedule = {};
+    });
+
+    res.send(allSchedule);
+  });
 });
 
 app.listen(PORT, () => {

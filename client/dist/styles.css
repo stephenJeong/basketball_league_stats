@@ -184,6 +184,10 @@ hr {
   font-size: 14px;
 }
 
+.tl-teamName:hover {
+  color: #f26178;
+}
+
 .teamList {
   background-color: #fff;
   padding: 0px 5px 0px 5px;
