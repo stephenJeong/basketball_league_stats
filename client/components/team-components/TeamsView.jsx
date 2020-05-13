@@ -3,7 +3,6 @@ import TeamList from './TeamList.jsx';
 import TeamOverview from './TeamOverview.jsx';
 import TeamGamesGlance from './TeamGamesGlance.jsx';
 import TeamPlayersView from './TeamPlayersView.jsx';
-import { render } from 'react-dom';
 
 class TeamsView extends React.Component {
   constructor(props) {
@@ -13,6 +12,7 @@ class TeamsView extends React.Component {
       playerStats: this.props.playerStats,
       sortedTeams: [],
       selectedTeam: {},
+      schedule: {},
     };
 
     this.setDefaultTeam = this.setDefaultTeam.bind(this);
@@ -31,27 +31,53 @@ class TeamsView extends React.Component {
       }
     });
 
+    // sort teams in alphabetical order
     let sort = uniqueTeams.sort((a, b) => {
       if (a < b) { return -1; }
       if (a > b) { return 1; }
       return 0;
     });
 
+    // set default team
+    let team = {};
+
     this.props.teamStats.forEach((elem) => {
       if (elem.name === sort[0]) {
-        this.setState({
-          selectedTeam: elem,
-        })
+        team = elem;
+      }
+    });
+
+    // find last week and next week Sunday's dates
+    let today = new Date();
+    let yyyy = today.getFullYear();
+    let mm = String(today.getMonth() + 1);
+    let ddLast = String(today.getDate() + (0 - today.getDay() % 7));
+    let ddNext = String(today.getDate() + (7 - today.getDay() % 7));
+
+    let lastSunday = mm + '/' + ddLast + '/' + yyyy;
+    let nextSunday = mm + '/' + ddNext + '/' + yyyy;
+    
+    // separate out schedule for selected team
+    let teamSchedule = {}
+    this.props.schedule.forEach((elem) => {
+      if (elem.awayTeam === team.name || elem.homeTeam === team.name) {
+        if (elem.date === lastSunday) {
+          teamSchedule.lastWeek = elem;
+        } else if (elem.date === nextSunday) {
+          teamSchedule.nextWeek = elem;
+        }
       }
     });
 
     this.setState({
       sortedTeams: sort,
+      selectedTeam: team,
+      schedule: teamSchedule,
     });
   }
 
   render() {
-    let { teamStats, playerStats, sortedTeams, selectedTeam } = this.state;
+    let { teamStats, playerStats, sortedTeams, selectedTeam, schedule } = this.state;
 
     return (
       <div id="teamsView">
@@ -62,7 +88,7 @@ class TeamsView extends React.Component {
           <TeamOverview teams={teamStats} players={playerStats} selectedTeam={selectedTeam} />
         </div>
         <div id="tv-teamGames">
-          <TeamGamesGlance teams={teamStats} players={playerStats} selectedTeam={selectedTeam} />
+          <TeamGamesGlance teams={teamStats} players={playerStats} selectedTeam={selectedTeam} schedule={schedule} />
         </div>
         <div id="tv-teamPlayers">
           <TeamPlayersView teams={teamStats} players={playerStats} selectedTeam={selectedTeam} />
