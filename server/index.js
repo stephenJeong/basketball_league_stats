@@ -29,26 +29,89 @@ async function getData(index, callback) {
   callback(rows);
 }
 
-const teamSchedule = (callback) => {
-  getData(2, (data) => {
+const getSheetData = (callback, tabNumber) => {
+  getData(tabNumber, (data) => {
     callback(data);
   });
 };
 
-const playerStats = (callback) => {
-  getData(3, (data) => {
-    callback(data);
-  });
-};
+/*
+app.get('/api/home', (req, res) => {
+  let data = {};
 
-const teamStats = (callback) => {
-  getData(4, (data) => {
-    callback(data);
+  // get playerStats
+  getSheetData((stats) => {
+    let allPlayers = [];
+    let player = {};
+    stats.forEach((person) => {
+      player.name = person.name;
+      player.photo = person.photo;
+      player.team = person.team;
+      player.gamesPlayed = person.gamesPlayed;
+      player.totalPoints = person.totalPoints;
+      player.ppg = person.ppg;
+      player.fg = person.fg;
+      player.fgA = person.fgA;
+      player.threePt = person.threePt;
+      player.threePtA = person.threePtA;
+      player.fgPct = person.fgPct;
+      player.ft = person.ft;
+      player.ftA = person.ftA;
+      player.ftPct = person.ftPct;
+      player.fouls = person.fouls;
+
+      allPlayers.push(player);
+      player = {};
+    })
+
+    data.playerStats = allPlayers;
+  }, 2);
+
+  getSheetData((stats) => {
+    let allTeams = [];
+    let teamData = {};
+    stats.forEach((team) => {
+      teamData.name = team.name;
+      teamData.wins = team.wins;
+      teamData.losses = team.losses;
+      teamData.standing = team.standing;
+      teamData.ppg = team.ppg;
+      teamData.threePg = team.threePg;
+      teamData.ftPg = team.ftPg;
+
+      allTeams.push(teamData);
+      teamData = {};
+    });
+
+    data.teamStats = allTeams;
+  }, 4);
+
+  teamSchedule((scheduleData) => {
+    let allSchedule = [];
+    let schedule = {};
+
+    scheduleData.forEach((row) => {
+      schedule.week = row.week;
+      schedule.date = row.date;
+      schedule.time = row.time;
+      schedule.homeTeam = row.homeTeam;
+      schedule.homeScore = row.homeScore;
+      schedule.awayScore = row.awayScore;
+      schedule.awayTeam = row.awayTeam;
+
+      allSchedule.push(schedule);
+      schedule = {};
+    });
+
+    data.teamSchedule = allSchedule;
   });
-};
+
+  res.send(data);
+});
+*/
 
 app.get('/api/player', (req, res) => {
-  playerStats((stats) => {
+  getSheetData((stats) => {
     let allPlayers = [];
     let player = {};
     stats.forEach((person) => {
@@ -73,11 +136,11 @@ app.get('/api/player', (req, res) => {
     })
 
     res.send(allPlayers);
-  })
+  }, 3);
 });
 
 app.get('/api/team', (req, res) => {
-  teamStats((stats) => {
+  getSheetData((stats) => {
     let allTeams = [];
     let teamData = {};
     stats.forEach((team) => {
@@ -94,14 +157,13 @@ app.get('/api/team', (req, res) => {
     });
 
     res.send(allTeams);
-  })
+  }, 4);
 });
 
 app.get('/api/schedule', (req, res) => {
-  teamSchedule((data) => {
+  getSheetData((data) => {
     let allSchedule = [];
     let schedule = {};
-
 
     data.forEach((row) => {
       schedule.week = row.week;
@@ -117,7 +179,7 @@ app.get('/api/schedule', (req, res) => {
     });
 
     res.send(allSchedule);
-  });
+  }, 2);
 });
 
 app.listen(PORT, () => {
