@@ -18,8 +18,14 @@ class App extends React.Component {
       sortedTeams: [],
       selectedTeam: {},
       teamSchedule: {
-        lastGame: {},
-        nextGame: {},
+        lastGame: {
+          date: '',
+          awayScore: '',
+        },
+        nextGame: {
+          date: '',
+          awayScore: '',
+        },
       },
     };
 
@@ -34,7 +40,12 @@ class App extends React.Component {
     this.getSchedule();
     this.getPlayerStats();
     this.getTeamStats();
-    this.setDefaultTeam();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.allSchedule !== this.state.allSchedule) {
+      this.setDefaultTeam();
+    }
   }
 
   getPlayerStats() {
@@ -70,7 +81,6 @@ class App extends React.Component {
     }
 
     const pivot = parseInt(arr[Math.floor(Math.random() * arr.length)].totalPoints, 10);
-
     const left = [];
     const equal = [];
     const right = [];
@@ -91,8 +101,34 @@ class App extends React.Component {
   getTeamStats() {
     axios.get('/api/team')
       .then((res) => {
+        // only send unique teams
+        let uniqueTeams = [];
+        res.data.forEach((elem) => {
+          if (!uniqueTeams.includes(elem.name)) {
+            uniqueTeams.push(elem.name);
+          }
+        });
+
+        // sort teams in alphabetical order
+        let sort = uniqueTeams.sort((a, b) => {
+          if (a < b) { return -1; }
+          if (a > b) { return 1; }
+          return 0;
+        });
+
+        // set default team
+        let team = {};
+
+        uniqueTeams.forEach((elem) => {
+          if (elem === sort[0]) {
+            team = elem;
+          }
+        });
+
         this.setState({
           teamStats: res.data,
+          sortedTeams: sort,
+          selectedTeam: team,
         });
 
 
@@ -103,30 +139,6 @@ class App extends React.Component {
   }
 
   setDefaultTeam() {
-    // only send unique teams
-    let uniqueTeams = [];
-    this.state.teamStats.forEach((elem) => {
-      if (!uniqueTeams.includes(elem.name)) {
-        uniqueTeams.push(elem.name);
-      }
-    });
-
-    // sort teams in alphabetical order
-    let sort = uniqueTeams.sort((a, b) => {
-      if (a < b) { return -1; }
-      if (a > b) { return 1; }
-      return 0;
-    });
-
-    // set default team
-    let team = {};
-
-    uniqueTeams.forEach((elem) => {
-      if (elem.name === sort[0]) {
-        team = elem;
-      }
-    });
-
     // find last week and next week Sunday's dates
     let today = new Date();
     let yyyy = today.getFullYear();
@@ -140,7 +152,7 @@ class App extends React.Component {
     // separate out schedule for selected team
     let teamSchedule = {}
     this.state.allSchedule.forEach((elem) => {
-      if (elem.awayTeam === team.name || elem.homeTeam === team.name) {
+      if (elem.awayTeam === this.state.selectedTeam || elem.homeTeam === this.state.selectedTeam) {
         if (elem.date === lastSunday) {
           teamSchedule.lastWeek = elem;
         } else if (elem.date === nextSunday) {
@@ -149,16 +161,10 @@ class App extends React.Component {
       }
     });
 
-    console.log('teamSchedule in app.jsx:', teamSchedule)
-
     this.setState({
-      sortedTeams: sort,
-      selectedTeam: team,
       teamSchedule: teamSchedule,
     });
   }
-
-
 
   render() {
     let { playerStats, leaders, teamStats, sortedTeams, selectedTeam, teamSchedule } = this.state;

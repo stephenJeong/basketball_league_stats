@@ -4,18 +4,19 @@ import TeamOverview from './TeamOverview.jsx';
 import TeamGamesGlance from './TeamGamesGlance.jsx';
 import TeamPlayersView from './TeamPlayersView.jsx';
 
-class TeamsView extends React.Component {
+const TeamsView = ({ teamStats, playerStats, sortedTeams, selectedTeam, schedule }) => {
+  /*
   constructor(props) {
     super(props);
     this.state = {
       teamStats: this.props.teamStats,
       playerStats: this.props.playerStats,
-      sortedTeams: [],
-      selectedTeam: {},
-      schedule: {},
+      sortedTeams: this.props.sortedTeams,
+      selectedTeam: this.props.selectedTeam,
+      schedule: this.props.schedule,
     };
 
-    this.setDefaultTeam = this.setDefaultTeam.bind(this);
+    // this.setDefaultTeam = this.setDefaultTeam.bind(this);
   }
 
   componentDidMount() {
@@ -56,7 +57,7 @@ class TeamsView extends React.Component {
 
     let lastSunday = mm + '/' + ddLast + '/' + yyyy;
     let nextSunday = mm + '/' + ddNext + '/' + yyyy;
-    
+
     // separate out schedule for selected team
     let teamSchedule = {}
     this.props.schedule.forEach((elem) => {
@@ -69,15 +70,16 @@ class TeamsView extends React.Component {
       }
     });
 
+    console.log(teamSchedule)
+
     this.setState({
       sortedTeams: sort,
       selectedTeam: team,
       schedule: teamSchedule,
     });
   }
+  */
 
-  render() {
-    let { teamStats, playerStats, sortedTeams, selectedTeam, schedule } = this.state;
 
     return (
       <div id="teamsView">
@@ -95,7 +97,6 @@ class TeamsView extends React.Component {
         </div>
       </div>
     );
-  }
 };
 
 export default TeamsView;
