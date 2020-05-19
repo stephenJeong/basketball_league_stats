@@ -1,36 +1,28 @@
 import React from 'react';
 
 const TeamGame = ({ game }) => {
-  let { date } = game;
-
-  let gameWeek = 'LAST GAME';
-  if (game.awayScore === '') {
-    gameWeek = 'NEXT GAME'
-  };
-
+  let { date, awayScore, awayTeam, homeScore, homeTeam, time, gameWeek } = game;
 
   return (
     <div id="gg-game">
       <div id="gg-game-date">
-        <strong>{gameWeek}</strong> {date}
+        <strong>{gameWeek}</strong> {date} | {time}
       </div>
       <div id="gg-game-sched">
         <div>
-          {game}<br/>
-          72-5
+          {awayTeam}
         </div>
         <div className="gg-score">
-          110
+          {awayScore}
         </div>
         <div className="gg-status">
           FINAL
         </div>
         <div className="gg-score">
-          50
+          {homeScore}
         </div>
         <div>
-          <img src="https://www.stickpng.com/assets/images/58419c6aa6515b1e0ad75a61.png" alt="celtics" width="60" /><br/>
-          5-72
+          {homeTeam}
         </div>
       </div>
     </div>

@@ -7,10 +7,10 @@ const TeamGamesGlance = ({ schedule }) => (
       <h2>Games at a Glance</h2>
     </div>
     <div>
-      <TeamGame game={schedule.lastWeek} key={schedule.date} />
+      <TeamGame game={schedule.lastWeek} key={schedule.date} gameWeek={'LAST'} />
     </div>
     <div>
-      <TeamGame game={schedule.nextWeek} key={schedule.date} />
+      <TeamGame game={schedule.nextWeek} key={schedule.date} gameWeek={'NEXT'} />
     </div>
   </div>
 );
