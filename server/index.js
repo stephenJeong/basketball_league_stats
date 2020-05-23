@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const creds = require('../client_secret.json');
-// const db = require('../database/index.js');
 const PORT = 3000;
 
 const app = express();
