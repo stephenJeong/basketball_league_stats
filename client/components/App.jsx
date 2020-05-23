@@ -18,11 +18,11 @@ class App extends React.Component {
       sortedTeams: [],
       selectedTeam: {},
       teamSchedule: {
-        lastGame: {
+        lastWeek: {
           date: '',
           awayScore: '',
         },
-        nextGame: {
+        nextWeek: {
           date: '',
           awayScore: '',
         },
@@ -37,6 +37,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
     this.getSchedule();
     this.getPlayerStats();
     this.getTeamStats();
@@ -66,12 +67,39 @@ class App extends React.Component {
   getSchedule() {
     axios.get('/api/schedule')
       .then((res) => {
+        // find last week and next week Sunday's dates
+        let today = new Date();
+        let yyyy = today.getFullYear();
+        let mm = String(today.getMonth() + 1);
+        let ddLast = String(today.getDate() + (0 - today.getDay() % 7));
+        let ddNext = String(today.getDate() + (7 - today.getDay() % 7));
+
+        let lastSunday = mm + '/' + ddLast + '/' + yyyy;
+        let nextSunday = mm + '/' + ddNext + '/' + yyyy;
+
+        // separate out schedule for selected team
+        let teamSchedule = {}
+        res.data.forEach((elem) => {
+          if (elem.awayTeam === this.state.selectedTeam || elem.homeTeam === this.state.selectedTeam) {
+            if (elem.date === lastSunday) {
+              teamSchedule.lastWeek = elem;
+            } else if (elem.date === nextSunday) {
+              teamSchedule.nextWeek = elem;
+            }
+          }
+        });
+        if (teamSchedule !== {}) {
+          this.setState({
+            teamSchedule: teamSchedule,
+          });
+        }
+
         this.setState({
           allSchedule: res.data,
         });
       })
       .catch((err) => {
-        console.log(`error while getting player data: ${err}`);
+        console.log(`error while getting schedule data: ${err}`);
       });
   }
 
@@ -160,10 +188,11 @@ class App extends React.Component {
         }
       }
     });
-
-    this.setState({
-      teamSchedule: teamSchedule,
-    });
+    if (teamSchedule !== {}) {
+      this.setState({
+        teamSchedule: teamSchedule,
+      });
+    }
   }
 
   render() {

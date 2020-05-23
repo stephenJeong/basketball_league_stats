@@ -6,23 +6,19 @@ const TeamGame = ({ game }) => {
   return (
     <div id="gg-game">
       <div id="gg-game-date">
-        <strong>{gameWeek}</strong> {date} | {time}
+        <strong>{gameWeek}</strong> {date} @ {time}
       </div>
       <div id="gg-game-sched">
-        <div>
-          {awayTeam}
-        </div>
         <div className="gg-score">
+          {awayTeam}<br/>
           {awayScore}
         </div>
         <div className="gg-status">
           FINAL
         </div>
         <div className="gg-score">
+          {homeTeam}<br/>
           {homeScore}
-        </div>
-        <div>
-          {homeTeam}
         </div>
       </div>
     </div>

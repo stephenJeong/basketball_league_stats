@@ -15,7 +15,7 @@ const TeamOverview = ({ teams, selectedTeam }) => {
       <div className="to-name">
         <h1>{defaultTeam.name}</h1>
       </div>
-      <TeamStats teams={teams} defaultTeam={defaultTeam} />
+      <TeamStats defaultTeam={defaultTeam} />
     </div>
   )
 };

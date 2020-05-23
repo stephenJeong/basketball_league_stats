@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TeamStats = ({ teams, defaultTeam }) => (
+const TeamStats = ({ defaultTeam }) => (
   <div id="teamStats">
     <div id="ppg">
       PPG<br/><span className="ts-stat">{defaultTeam.ppg}</span>
