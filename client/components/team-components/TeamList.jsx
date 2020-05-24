@@ -1,11 +1,11 @@
 import React from 'react';
 import TeamName from './TeamName.jsx';
 
-const TeamList = ({ sortedTeams }) => (
+const TeamList = ({ teamClickHandler, sortedTeams }) => (
   <div className="teamList">
     {sortedTeams.map(team => {
       return (
-        <TeamName name={team} key={team} />
+        <TeamName teamClickHandler={teamClickHandler} name={team} key={team} />
       )
     })}
   </div>

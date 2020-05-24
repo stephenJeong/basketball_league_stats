@@ -1,8 +1,8 @@
 import React from 'react';
 
-const TeamName = ({ name }) => {
+const TeamName = ({ teamClickHandler, name }) => {
   return (
-    <div className="tl-teamName">
+    <div onClick={() => teamClickHandler(name)} className="tl-teamName">
       {name}
     </div>
   )

@@ -2,7 +2,6 @@ import React from 'react';
 import TeamGame from './TeamGame.jsx';
 
 const TeamGamesGlance = ({ schedule }) => {
-  console.log('schedule in TeamsGamesGlance: ', schedule);
   return (
     <div id="games-glance">
     <div id="gg-title">

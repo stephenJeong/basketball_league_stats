@@ -34,10 +34,10 @@ class App extends React.Component {
     this.getTeamStats = this.getTeamStats.bind(this);
     this.getSchedule = this.getSchedule.bind(this);
     this.setDefaultTeam = this.setDefaultTeam.bind(this);
+    this.handleTeamClick = this.handleTeamClick.bind(this);
   }
 
   componentDidMount() {
-    this._isMounted = true;
     this.getSchedule();
     this.getPlayerStats();
     this.getTeamStats();
@@ -195,6 +195,11 @@ class App extends React.Component {
     }
   }
 
+  handleTeamClick(val) {
+    let test = val;
+    console.log(`handleTeamClick: ${test}`)
+  }
+
   render() {
     let { playerStats, leaders, teamStats, sortedTeams, selectedTeam, teamSchedule } = this.state;
 
@@ -206,7 +211,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" render={(routeProps) => (<Landing {...routeProps} playerStats={playerStats} leaders={leaders} />)} />
               <Route path="/teams" render={(routeProps) => (
-                <TeamsView {...routeProps} teamStats={teamStats} playerStats={playerStats} sortedTeams={sortedTeams} selectedTeam={selectedTeam} schedule={teamSchedule} />
+                <TeamsView {...routeProps} teamClickHandler={this.handleTeamClick} teamStats={teamStats} playerStats={playerStats} sortedTeams={sortedTeams} selectedTeam={selectedTeam} schedule={teamSchedule} />
                 )}
               />
             </Switch>

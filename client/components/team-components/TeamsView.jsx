@@ -4,12 +4,11 @@ import TeamOverview from './TeamOverview.jsx';
 import TeamGamesGlance from './TeamGamesGlance.jsx';
 import TeamPlayersView from './TeamPlayersView.jsx';
 
-const TeamsView = ({ teamStats, playerStats, sortedTeams, selectedTeam, schedule }) => {
-  console.log(`schedule in TeamsView: ${JSON.stringify(schedule)}`)
+const TeamsView = ({ teamClickHandler, teamStats, playerStats, sortedTeams, selectedTeam, schedule }) => {
   return (
     <div id="teamsView">
       <div id="tv-teamList">
-        <TeamList teams={teamStats} players={playerStats} sortedTeams={sortedTeams} />
+        <TeamList teamClickHandler={teamClickHandler} teams={teamStats} players={playerStats} sortedTeams={sortedTeams} />
       </div>
       <div id="tv-teamOverview">
         <TeamOverview teams={teamStats} selectedTeam={selectedTeam} />
