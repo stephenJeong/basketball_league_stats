@@ -12,33 +12,43 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-async function getData(index, callback) {
+async function getData(pIndex, tIndex, sIndex, callback) {
   const doc = new GoogleSpreadsheet('1uyoyCE2tc3tnPO7GeVGUUbjCR2-IwDu-HSodzpYV5og');
   await doc.useServiceAccountAuth(creds);
   await doc.loadInfo(); // loads document properties and worksheets
 
-  console.log(`Title: ${doc.title}`);
+  console.log(`Google Sheet Title: ${doc.title}`);
 
+  /*
   const sheet = doc.sheetsByIndex[index]; // or use doc.sheetsById[id]
   console.log(`Sheet Title: ${sheet.title}`);
   console.log(`Number of Rows: ${sheet.rowCount}`);
 
   const rows = await sheet.getRows();
+  */
 
-  callback(rows);
+  const allRows = {
+    player: await doc.sheetsByIndex[pIndex].getRows(),
+    team: await doc.sheetsByIndex[tIndex].getRows(),
+    schedule: await doc.sheetsByIndex[sIndex].getRows(),
+  }
+
+  callback(allRows);
 }
 
-const getSheetData = (callback, tabNumber) => {
-  getData(tabNumber, (data) => {
+const getSheetData = (pIndex, tIndex, sIndex, callback) => {
+  getData(pIndex, tIndex, sIndex, (data) => {
     callback(data);
   });
 };
 
-app.get('/api/player', (req, res) => {
-  getSheetData((stats) => {
-    let allPlayers = [];
+app.get('/api/all', (req, res) => {
+  getSheetData(3, 4, 2, (data) => {
+    console.log('getting into alldata server')
+
+    let playerData = [];
     let player = {};
-    stats.forEach((person) => {
+    data.player.forEach((person) => {
       player.name = person.name;
       player.photo = person.photo;
       player.team = person.team;
@@ -55,41 +65,28 @@ app.get('/api/player', (req, res) => {
       player.ftPct = person.ftPct;
       player.fouls = person.fouls;
 
-      allPlayers.push(player);
+      playerData.push(player);
       player = {};
-    })
-
-    res.send(allPlayers);
-  }, 3);
-});
-
-app.get('/api/team', (req, res) => {
-  getSheetData((stats) => {
-    let allTeams = [];
-    let teamData = {};
-    stats.forEach((team) => {
-      teamData.name = team.name;
-      teamData.wins = team.wins;
-      teamData.losses = team.losses;
-      teamData.standing = team.standing;
-      teamData.ppg = team.ppg;
-      teamData.threePg = team.threePg;
-      teamData.ftPg = team.ftPg;
-
-      allTeams.push(teamData);
-      teamData = {};
     });
 
-    res.send(allTeams);
-  }, 4);
-});
+    let teamData = [];
+    let oneTeam = {};
+    data.team.forEach((team) => {
+      oneTeam.name = team.name;
+      oneTeam.wins = team.wins;
+      oneTeam.losses = team.losses;
+      oneTeam.standing = team.standing;
+      oneTeam.ppg = team.ppg;
+      oneTeam.threePg = team.threePg;
+      oneTeam.ftPg = team.ftPg;
 
-app.get('/api/schedule', (req, res) => {
-  getSheetData((data) => {
-    let allSchedule = [];
+      teamData.push(oneTeam);
+      oneTeam = {};
+    });
+
+    let scheduleData = [];
     let schedule = {};
-
-    data.forEach((row) => {
+    data.schedule.forEach((row) => {
       schedule.week = row.week;
       schedule.date = row.date;
       schedule.time = row.time;
@@ -98,12 +95,18 @@ app.get('/api/schedule', (req, res) => {
       schedule.awayScore = row.awayScore;
       schedule.awayTeam = row.awayTeam;
 
-      allSchedule.push(schedule);
+      scheduleData.push(schedule);
       schedule = {};
     });
 
-    res.send(allSchedule);
-  }, 2);
+    let allData = [{
+      players: playerData,
+      teams: teamData,
+      schedules: scheduleData,
+    }];
+
+    res.send(allData);
+  })
 });
 
 app.listen(PORT, () => {
