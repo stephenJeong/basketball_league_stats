@@ -278,6 +278,7 @@ hr {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-template-rows: auto;
+  grid-row-gap: 20px;
   text-align: center;
   color: #0047ba;
   font-weight: bold;

@@ -17,7 +17,7 @@ const TeamsView = ({ teamClickHandler, teamStats, playerStats, sortedTeams, sele
         <TeamGamesGlance schedule={schedule} />
       </div>
       <div id="tv-teamPlayers">
-        <TeamPlayersView teams={teamStats} players={playerStats} selectedTeam={selectedTeam} />
+        <TeamPlayersView teams={teamStats} selectedTeam={selectedTeam} players={playerStats} selectedTeam={selectedTeam} />
       </div>
     </div>
   );
