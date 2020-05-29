@@ -15,6 +15,7 @@ class App extends React.Component {
       leaders: [],
       teamStats: [],
       sortedTeams: [],
+      allSchedule: [],
       selectedTeam: {},
       teamSchedule: {
         lastWeek: {
@@ -31,11 +32,19 @@ class App extends React.Component {
     this.reverseSortPlayers = this.reverseSortPlayers.bind(this);
     this.handleTeamClick = this.handleTeamClick.bind(this);
     this.getAllStats = this.getAllStats.bind(this);
+    this.setSchedule = this.setSchedule.bind(this);
   }
 
   componentDidMount() {
     this.getAllStats();
   }
+
+  // compnentDidUpdate(prevProps, prevState) {
+  //   console.log('here')
+  //   if (prevProps.selectedTeam !== this.state.selectedTeam) {
+  //     this.setSchedule();
+  //   }
+  // }
 
   getAllStats() {
     axios.get('/api/all')
@@ -68,46 +77,61 @@ class App extends React.Component {
           }
         });
 
-        // find last week and next week Sunday's dates
-        const today = new Date();
-        const yyyy = today.getFullYear();
-        const mm = String(today.getMonth() + 1);
-        const ddLast = String(today.getDate() + (0 - today.getDay() % 7));
-        const ddNext = String(today.getDate() + (7 - today.getDay() % 7));
-
-        const lastSunday = `${mm}/${ddLast}/${yyyy}`;
-        const nextSunday = `${mm}/${ddNext}/${yyyy}`;
-
-        // set schedule data
-        // separate out schedule for selected team
-        const teamSchedule = {};
-        res.data[0].schedules.forEach((elem) => {
-          if (elem.awayTeam === defaultTeam || elem.homeTeam === defaultTeam) {
-            if (elem.date === lastSunday) {
-              teamSchedule.lastWeek = elem;
-            } else if (elem.date === nextSunday) {
-              teamSchedule.nextWeek = elem;
-            }
-          }
-        });
-
-        if (teamSchedule !== {}) {
-          this.setState({
-            teamSchedule: teamSchedule,
-          });
-        }
-
         this.setState({
           playerStats: sortedPlayers,
           leaders: leaders,
           teamStats: res.data[0].teams,
           sortedTeams: sort,
           selectedTeam: defaultTeam,
+          allSchedule: res.data[0].schedules,
         });
+
+        this.setSchedule(defaultTeam);
       })
       .catch((err) => {
         console.log(`error while getting all data: ${err}`);
       });
+  }
+
+  setSchedule(selectedTeam) {
+    // find last week and next week Sunday's dates
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1);
+    const ddLast = String(today.getDate() + (0 - today.getDay() % 7));
+    const ddNext = String(today.getDate() + (7 - today.getDay() % 7));
+
+    const lastSunday = `${mm}/${ddLast}/${yyyy}`;
+    const nextSunday = `${mm}/${ddNext}/${yyyy}`;
+
+    // set schedule data
+    // separate out schedule for selected team
+    const teamSchedule = {
+      lastWeek: {
+        date: lastSunday,
+      },
+      nextWeek: {
+        date: nextSunday,
+      }
+    };
+
+    this.state.allSchedule.forEach((elem) => {
+      if (elem.awayTeam === selectedTeam || elem.homeTeam === selectedTeam) {
+        if (lastSunday === elem.date) {
+          teamSchedule.lastWeek = elem;
+        } else if (nextSunday === elem.date) {
+          teamSchedule.nextWeek = elem;
+        }
+      }
+    });
+
+
+
+    if (teamSchedule !== {}) {
+      this.setState({
+        teamSchedule: teamSchedule,
+      });
+    }
   }
 
   reverseSortPlayers(arr) {
@@ -136,7 +160,9 @@ class App extends React.Component {
   handleTeamClick(val) {
     this.setState({
       selectedTeam: val,
-    })
+    });
+
+    this.setSchedule(val);
   }
 
   render() {

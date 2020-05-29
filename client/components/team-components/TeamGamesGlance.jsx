@@ -2,6 +2,7 @@ import React from 'react';
 import TeamGame from './TeamGame.jsx';
 
 const TeamGamesGlance = ({ schedule }) => {
+  console.log(`schedule in TeamGamesGlance: ${JSON.stringify(schedule)}`)
   return (
     <div id="games-glance">
     <div id="gg-title">
