@@ -184,6 +184,10 @@ hr {
   font-size: 14px;
 }
 
+.tl-teamName:hover {
+  color: #f26178;
+}
+
 .teamList {
   background-color: #fff;
   padding: 0px 5px 0px 5px;
@@ -233,7 +237,7 @@ hr {
 #games-glance {
   background-color: #fff;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: auto auto;
 }
 
@@ -245,7 +249,7 @@ hr {
 
 #gg-game-sched {
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-template-rows: auto auto;
   text-transform: uppercase;
   text-align: center;
@@ -258,15 +262,15 @@ hr {
 
 #gg-game-date {
   text-align: center;
+  font-size: 25px;
 }
 
 .gg-score {
-  font-size: 35px;
-  /* margin: auto; */
+  font-size: 1.2rem;
 }
 
 .gg-status {
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 

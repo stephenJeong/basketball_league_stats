@@ -1,14 +1,21 @@
 import React from 'react';
 import TeamStats from './TeamStats.jsx';
 
-const TeamOverview = ({ teams }) => {
+const TeamOverview = ({ teams, selectedTeam }) => {
+  let defaultTeam = {};
+
+  teams.forEach((team) => {
+    if (team.name === selectedTeam) {
+      defaultTeam = team;
+    }
+  });
 
   return (
     <div>
       <div className="to-name">
-        <h1>Los Angeles Lakers</h1>
+        <h1>{defaultTeam.name}</h1>
       </div>
-      <TeamStats teams={teams} />
+      <TeamStats defaultTeam={defaultTeam} />
     </div>
   )
 };

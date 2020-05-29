@@ -1,31 +1,26 @@
 import React from 'react';
-import NavBar from '../NavBar.jsx';
 import TeamList from './TeamList.jsx';
 import TeamOverview from './TeamOverview.jsx';
 import TeamGamesGlance from './TeamGamesGlance.jsx';
 import TeamPlayersView from './TeamPlayersView.jsx';
-import data from '../../../database/data.json';
 
-const TeamsView = ({ listPropsHere }) => {
+const TeamsView = ({ teamClickHandler, teamStats, playerStats, sortedTeams, selectedTeam, schedule }) => {
   return (
     <div id="teamsView">
-      <div id="tv-navBar">
-        <NavBar />
-      </div>
       <div id="tv-teamList">
-        <TeamList teams={data} />
+        <TeamList teamClickHandler={teamClickHandler} teams={teamStats} players={playerStats} sortedTeams={sortedTeams} />
       </div>
       <div id="tv-teamOverview">
-        <TeamOverview teams={data} />
+        <TeamOverview teams={teamStats} selectedTeam={selectedTeam} />
       </div>
       <div id="tv-teamGames">
-        <TeamGamesGlance teams={data} />
+        <TeamGamesGlance schedule={schedule} />
       </div>
       <div id="tv-teamPlayers">
-        <TeamPlayersView teams={data} />
+        <TeamPlayersView teams={teamStats} players={playerStats} selectedTeam={selectedTeam} />
       </div>
     </div>
-  )
+  );
 };
 
 export default TeamsView;
