@@ -40,8 +40,6 @@ class App extends React.Component {
   getAllStats() {
     axios.get('/api/all')
       .then((res) => {
-        console.log(res.data);
-
         // set player data
         const sortedPlayers = this.reverseSortPlayers(res.data[0].players);
         const leaders = sortedPlayers.splice(0, 5);
@@ -136,8 +134,9 @@ class App extends React.Component {
   }
 
   handleTeamClick(val) {
-    let test = val;
-    console.log(`handleTeamClick: ${test}`);
+    this.setState({
+      selectedTeam: val,
+    })
   }
 
   render() {
