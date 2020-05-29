@@ -5,7 +5,7 @@ import Hero from './Hero.jsx';
 const Landing = ({ leaders }) => (
   <div>
     <WeeklySchedule />
-    <Hero leaders={leaders}  />
+    <Hero leaders={leaders} />
   </div>
 );
 

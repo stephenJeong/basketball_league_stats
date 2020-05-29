@@ -14,7 +14,6 @@ class App extends React.Component {
       playerStats: [],
       leaders: [],
       teamStats: [],
-      allSchedule: [],
       sortedTeams: [],
       selectedTeam: {},
       teamSchedule: {
@@ -49,7 +48,7 @@ class App extends React.Component {
 
         // set team data
         // only send unique teams
-        let uniqueTeams = [];
+        const uniqueTeams = [];
         res.data[0].teams.forEach((elem) => {
           if (!uniqueTeams.includes(elem.name)) {
             uniqueTeams.push(elem.name);
@@ -57,7 +56,7 @@ class App extends React.Component {
         });
 
         // sort teams in alphabetical order
-        let sort = uniqueTeams.sort((a, b) => {
+        const sort = uniqueTeams.sort((a, b) => {
           if (a < b) { return -1; }
           if (a > b) { return 1; }
           return 0;
@@ -72,18 +71,18 @@ class App extends React.Component {
         });
 
         // find last week and next week Sunday's dates
-        let today = new Date();
-        let yyyy = today.getFullYear();
-        let mm = String(today.getMonth() + 1);
-        let ddLast = String(today.getDate() + (0 - today.getDay() % 7));
-        let ddNext = String(today.getDate() + (7 - today.getDay() % 7));
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1);
+        const ddLast = String(today.getDate() + (0 - today.getDay() % 7));
+        const ddNext = String(today.getDate() + (7 - today.getDay() % 7));
 
-        let lastSunday = mm + '/' + ddLast + '/' + yyyy;
-        let nextSunday = mm + '/' + ddNext + '/' + yyyy;
+        const lastSunday = `${mm}/${ddLast}/${yyyy}`;
+        const nextSunday = `${mm}/${ddNext}/${yyyy}`;
 
         // set schedule data
         // separate out schedule for selected team
-        let teamSchedule = {}
+        const teamSchedule = {};
         res.data[0].schedules.forEach((elem) => {
           if (elem.awayTeam === defaultTeam || elem.homeTeam === defaultTeam) {
             if (elem.date === lastSunday) {
@@ -103,7 +102,6 @@ class App extends React.Component {
         this.setState({
           playerStats: sortedPlayers,
           leaders: leaders,
-          allSchedule: res.data[0].schedules,
           teamStats: res.data[0].teams,
           sortedTeams: sort,
           selectedTeam: defaultTeam,
@@ -139,7 +137,7 @@ class App extends React.Component {
 
   handleTeamClick(val) {
     let test = val;
-    console.log(`handleTeamClick: ${test}`)
+    console.log(`handleTeamClick: ${test}`);
   }
 
   render() {
@@ -151,9 +149,22 @@ class App extends React.Component {
           <div>
             <Navbar />
             <Switch>
-              <Route exact path="/" render={(routeProps) => (<Landing {...routeProps} playerStats={playerStats} leaders={leaders} />)} />
-              <Route path="/teams" render={(routeProps) => (
-                <TeamsView {...routeProps} teamClickHandler={this.handleTeamClick} teamStats={teamStats} playerStats={playerStats} sortedTeams={sortedTeams} selectedTeam={selectedTeam} schedule={teamSchedule} />
+              <Route exact path="/"
+                render={(routeProps) => (
+                  <Landing {...routeProps} playerStats={playerStats} leaders={leaders} />
+                )}
+              />
+              <Route path="/teams"
+                render={(routeProps) => (
+                  <TeamsView
+                    {...routeProps}
+                    teamClickHandler={this.handleTeamClick}
+                    teamStats={teamStats}
+                    playerStats={playerStats}
+                    sortedTeams={sortedTeams}
+                    selectedTeam={selectedTeam}
+                    schedule={teamSchedule}
+                  />
                 )}
               />
             </Switch>

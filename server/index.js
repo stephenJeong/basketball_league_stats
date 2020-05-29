@@ -44,8 +44,6 @@ const getSheetData = (pIndex, tIndex, sIndex, callback) => {
 
 app.get('/api/all', (req, res) => {
   getSheetData(3, 4, 2, (data) => {
-    console.log('getting into alldata server')
-
     let playerData = [];
     let player = {};
     data.player.forEach((person) => {
