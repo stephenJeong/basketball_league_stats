@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import { render } from 'react-dom';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -95,14 +96,10 @@ class App extends React.Component {
 
   setSchedule(selectedTeam) {
     // find last week and next week Sunday's dates
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1);
-    const ddLast = String(today.getDate() + (0 - today.getDay() % 7));
-    const ddNext = String(today.getDate() + (7 - today.getDay() % 7));
-
-    const lastSunday = `${mm}/${ddLast}/${yyyy}`;
-    const nextSunday = `${mm}/${ddNext}/${yyyy}`;
+    const lastSunday = moment().day(0).format('M/DD/YYYY')
+    const nextSunday = moment().day(14).format('M/DD/YYYY')
+    console.log(lastSunday)
+    console.log(nextSunday)
 
     // set schedule data
     // separate out schedule for selected team
