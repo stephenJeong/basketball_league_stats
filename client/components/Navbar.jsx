@@ -1,24 +1,68 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBar = () => (
-  <div className="navBar">
-    <div className="navBar-item">
-      <Link to="/" className="navBar-links">Home</Link>
-    </div>
-    <div className="navBar-item">
-      <Link to="/" className="navBar-links">Schedule</Link>
-    </div>
-    <div className="navBar-item">
-      <Link to="/teams" className="navBar-links">Teams</Link>
-    </div>
-    <div className="navBar-item">
-      <Link to="/" className="navBar-links">Standings</Link>
-    </div>
-    <div className="navBar-item">
-      <Link to="/" className="navBar-links">Stats</Link>
-    </div>
-  </div>
-);
+class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePage: '',
+    };
+
+    this.toggleClass = this.toggleClass.bind(this);
+  }
+
+  toggleClass(page) {
+    this.setState({
+      activePage: page,
+    });
+  }
+
+  render() {
+    return (
+      <div className="navBar">
+        <div className="navBar-item">
+          <Link
+            to="/"
+            className={this.state.activePage === 'home' ? 'navBar-links-clicked': null}
+            onClick={() => {this.toggleClass('home')}}>
+              Home
+          </Link>
+        </div>
+        <div className="navBar-item">
+          <Link
+            to="/"
+            className={this.state.activePage === 'schedule' ? 'navBar-links-clicked': null}
+            onClick={() => {this.toggleClass('schedule')}}>
+            Schedule
+          </Link>
+        </div>
+        <div className="navBar-item">
+          <Link
+            to="/teams"
+            className={this.state.activePage === 'teams' ? 'navBar-links-clicked': null}
+            onClick={() => {this.toggleClass('teams')}}>
+            Teams
+          </Link>
+        </div>
+        <div className="navBar-item">
+          <Link
+            to="/"
+            className={this.state.activePage === 'standings' ? 'navBar-links-clicked': null}
+            onClick={() => {this.toggleClass('standings')}}>
+            Standings
+          </Link>
+        </div>
+        <div className="navBar-item">
+          <Link
+            to="/playerStats"
+            className={this.state.activePage === 'playerStats' ? 'navBar-links-clicked': null}
+            onClick={() => {this.toggleClass('playerStats')}}>
+            Player Stats
+          </Link>
+        </div>
+      </div>
+    )
+  }
+}
 
 export default NavBar;

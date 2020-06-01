@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Landing from './Landing.jsx';
 import Navbar from './Navbar.jsx';
 import TeamsView from './team-components/TeamsView.jsx';
+import PlayersView from './players-components/PlayersView.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -98,8 +99,6 @@ class App extends React.Component {
     // find last week and next week Sunday's dates
     const lastSunday = moment().day(0).format('M/DD/YYYY')
     const nextSunday = moment().day(14).format('M/DD/YYYY')
-    console.log(lastSunday)
-    console.log(nextSunday)
 
     // set schedule data
     // separate out schedule for selected team
@@ -176,7 +175,7 @@ class App extends React.Component {
                   <Landing {...routeProps} playerStats={playerStats} leaders={leaders} />
                 )}
               />
-              <Route path="/teams"
+              <Route path='/teams'
                 render={(routeProps) => (
                   <TeamsView
                     {...routeProps}
@@ -187,6 +186,14 @@ class App extends React.Component {
                     selectedTeam={selectedTeam}
                     schedule={teamSchedule}
                   />
+                )}
+              />
+              <Route path='/playerStats'
+                render={(routeProps) => (
+                <PlayersView
+                  {...routeProps}
+                  playerStats={playerStats}
+                />
                 )}
               />
             </Switch>
