@@ -1,8 +1,8 @@
 import React from 'react';
-import Player from './Player.jsx';
+import PlayerName from './PlayerName.jsx';
 
-const PlayersList = ({ playerStats }) => {
-  let sortedPlayers = playerStats.sort((a, b) => {
+const PlayersList = ({ players, playerClickHandler }) => {
+  let sortedPlayers = players.sort((a, b) => {
     if (a.name < b.name) {
       return -1; }
     if (a.name > b.name) {
@@ -15,7 +15,7 @@ const PlayersList = ({ playerStats }) => {
       <input type="text" name="Search Player" />
       <h3>PLAYER NAME</h3>
       {sortedPlayers.map((player) => (
-        <Player name={player.name} key={player.name} />
+        <PlayerName name={player.name} key={player.name} playerClickHandler={playerClickHandler} />
       ))}
     </div>
   );

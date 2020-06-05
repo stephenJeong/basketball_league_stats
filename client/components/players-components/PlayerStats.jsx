@@ -1,9 +1,9 @@
 import React from 'react';
 
-const PlayerStats = ({ props }) => {
+const PlayerStats = ({ stats }) => {
   return (
     <div>
-       player stats
+       {stats.name}
     </div>
   );
 };

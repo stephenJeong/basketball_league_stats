@@ -18,7 +18,7 @@ class App extends React.Component {
       teamStats: [],
       sortedTeams: [],
       allSchedule: [],
-      selectedTeam: {},
+      selectedTeam: '',
       teamSchedule: {
         lastWeek: {
           date: '',
