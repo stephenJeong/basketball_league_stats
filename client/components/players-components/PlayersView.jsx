@@ -37,9 +37,9 @@ class PlayersView extends React.Component {
         <div id="players-list">
           <PlayersList players={allPlayerStats} playerClickHandler={this.playerClickHandler} />
         </div>
-        <div id="players-stats">
+        {/* <div id="players-stats">
           <PlayerStats stats={playerStats} />
-        </div>
+        </div> */}
       </div>
     );
   }

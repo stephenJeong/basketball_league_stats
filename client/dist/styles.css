@@ -292,7 +292,7 @@ hr {
 
 #players-view {
   display: grid;
-  grid-template-columns: 10% 20% 60% 10%;
+  grid-template-columns: 10% 80% 10%;
   grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
 }
 
@@ -310,7 +310,7 @@ hr {
   height: 28px;
   border-radius: 4px;
   display: block;
-  width: 90%;
+  width: 30%;
   padding: .5rem;
   margin: 0 0 1rem;
   border: 1px solid #cacaca;
@@ -325,4 +325,22 @@ hr {
   border-bottom: solid 1px #66737C;
   color: #0B5BE1;
   font-weight: bold;
+}
+
+.player-tbl {
+  display: grid;
+  grid-template-columns: 3fr 3fr 1fr 1fr 1fr 1fr;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+}
+
+.player-tbl > div{
+  padding: 8px 4px;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.player-tbl-header {
+  font-weight: bold;
+  background-color: #e5e7e9;
 }
