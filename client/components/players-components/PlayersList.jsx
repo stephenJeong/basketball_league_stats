@@ -9,7 +9,6 @@ const PlayersList = ({ players, playerClickHandler }) => {
       return 1; }
     return 0;
   })
-  console.log(`players in playersList is an array:  ${Array.isArray(players)}`)
 
   return (
     <div id="players-list">
@@ -21,12 +20,9 @@ const PlayersList = ({ players, playerClickHandler }) => {
         <div className="player-tbl-header">PPG</div>
         <div className="player-tbl-header">FG%</div>
         <div className="player-tbl-header">FT%</div>
-        {players.map((player) => (
+        {sortedPlayers.map((player) => (
           <PlayerName name={player.name} player={player} key={player.name} />
         ))}
-        {/* {sortedPlayers.map((player) => (
-          <PlayerName name={player.name} key={player.name} playerClickHandler={playerClickHandler} />
-        ))} */}
       </div>
     </div>
   );

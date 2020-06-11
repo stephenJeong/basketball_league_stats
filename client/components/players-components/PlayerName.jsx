@@ -1,10 +1,7 @@
 import React, {Fragment} from 'react'
 
-const PlayerName = ({ player, name, playerClickHandler }) => {
+const PlayerName = ({ player }) => {
   return (
-    // <div onClick={() => playerClickHandler(name)} className="pl-player">
-    //   {name}
-    // </div>
     <Fragment>
       <div>{player.name}</div>
       <div>{player.team}</div>
