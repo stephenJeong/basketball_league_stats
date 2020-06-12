@@ -188,7 +188,7 @@ class App extends React.Component {
                   />
                 )}
               />
-              <Route path='/playerStats'
+              <Route path='/players'
                 render={(routeProps) => (
                 <PlayersView
                   {...routeProps}

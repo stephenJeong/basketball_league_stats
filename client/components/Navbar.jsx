@@ -54,10 +54,10 @@ class NavBar extends React.Component {
         </div>
         <div className="navBar-item">
           <Link
-            to="/playerStats"
-            className={this.state.activePage === 'playerStats' ? 'navBar-links-clicked': null}
-            onClick={() => {this.toggleClass('playerStats')}}>
-            Player Stats
+            to="/players"
+            className={this.state.activePage === 'players' ? 'navBar-links-clicked': null}
+            onClick={() => {this.toggleClass('players')}}>
+            Players
           </Link>
         </div>
       </div>
