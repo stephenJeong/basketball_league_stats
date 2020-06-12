@@ -1,20 +1,12 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 const WeeklyLeaders = ({ player }) => (
-  <tr key={player.name}>
-    <td>
-      {player.name}
-    </td>
-    <td>
-      {player.team}
-    </td>
-    <td>
-      {player.totalPoints}
-    </td>
-    <td>
-      {player.threePt}
-    </td>
-  </tr>
+  <Fragment>
+    <div>{player.name}</div>
+    <div>{player.team}</div>
+    <div>{player.totalPoints}</div>
+    <div>{player.threePt}</div>
+  </Fragment>
 );
 
 export default WeeklyLeaders;

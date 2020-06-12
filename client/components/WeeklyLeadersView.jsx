@@ -6,19 +6,15 @@ const WeeklyLeadersView = ({leaders}) => {
     <div>
       <h2>Weekly Leaders</h2>
       <hr />
-      <table className="w-leaders-tbl">
-        <tbody>
-          <tr className="w-leaders-headers">
-            <td>Name</td>
-            <td>Team</td>
-            <td>Points</td>
-            <td>3 Pointers</td>
-          </tr>
-          {leaders.map((elem) => (
+      <div className="w-leaders-tbl">
+        <div className="tbl-header">Name</div>
+        <div className="tbl-header">Team</div>
+        <div className="tbl-header">Points</div>
+        <div className="tbl-header">3 Pointers</div>
+        {leaders.map((elem) => (
             <WeeklyLeaders player={elem} key={elem.name} />
           ))}
-        </tbody>
-      </table>
+      </div>
     </div>
   );
 }
