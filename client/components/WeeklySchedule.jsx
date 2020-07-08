@@ -1,9 +1,10 @@
 import React from 'react';
+import moment from 'moment'
 
-const WeeklySchedule = ({ props }) => (
+const WeeklySchedule = ({ allSchedule }) => (
   <div className="w-sched">
     <div className="w-sched-item w-sched-date">
-      March 8
+      {moment().day(7).format('MMM Do')}
     </div>
     <div className="w-sched-item matchup">
       <div className="mu-time">
