@@ -162,7 +162,7 @@ class App extends React.Component {
   }
 
   render() {
-    let { playerStats, leaders, teamStats, sortedTeams, selectedTeam, teamSchedule } = this.state;
+    let { playerStats, leaders, teamStats, sortedTeams, selectedTeam, teamSchedule, allSchedule } = this.state;
 
     return (
       <div>
@@ -172,7 +172,12 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/"
                 render={(routeProps) => (
-                  <Landing {...routeProps} playerStats={playerStats} leaders={leaders} />
+                  <Landing
+                    {...routeProps}
+                    playerStats={playerStats}
+                    leaders={leaders}
+                    allSchedule={allSchedule}
+                  />
                 )}
               />
               <Route path='/teams'
