@@ -30,7 +30,7 @@ class NavBar extends React.Component {
         </div>
         <div className="navBar-item">
           <Link
-            to="/"
+            to="/schedule"
             className={this.state.activePage === 'schedule' ? 'navBar-links-clicked': null}
             onClick={() => {this.toggleClass('schedule')}}>
             Schedule
@@ -46,7 +46,7 @@ class NavBar extends React.Component {
         </div>
         <div className="navBar-item">
           <Link
-            to="/"
+            to="/standings"
             className={this.state.activePage === 'standings' ? 'navBar-links-clicked': null}
             onClick={() => {this.toggleClass('standings')}}>
             Standings

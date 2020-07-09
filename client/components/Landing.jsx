@@ -2,9 +2,9 @@ import React from 'react';
 import WeeklySchedule from './WeeklySchedule.jsx';
 import Hero from './Hero.jsx';
 
-const Landing = ({ leaders }) => (
+const Landing = ({ leaders, allSchedule }) => (
   <div>
-    <WeeklySchedule />
+    <WeeklySchedule allSchedule={allSchedule} />
     <Hero leaders={leaders} />
   </div>
 );

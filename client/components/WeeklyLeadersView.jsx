@@ -9,7 +9,7 @@ const WeeklyLeadersView = ({leaders}) => {
       <div className="w-leaders-tbl">
         <div className="tbl-header">Name</div>
         <div className="tbl-header">Team</div>
-        <div className="tbl-header">Points</div>
+        <div className="tbl-header">Total Points</div>
         <div className="tbl-header">3 Pointers</div>
         {leaders.map((elem) => (
             <WeeklyLeaders player={elem} key={elem.name} />

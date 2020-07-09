@@ -116,7 +116,7 @@ hr {
 
 #hero {
   display: grid;
-  grid-template-columns: 10% 40% 5% 35% 10%;
+  grid-template-columns: 10% 35% 5% 40% 10%;
   grid-template-rows: auto;
   margin-top: 50px;
 }
@@ -346,4 +346,11 @@ hr {
 .tbl-header {
   font-weight: bold;
   background-color: #e5e7e9;
+}
+
+.construction {
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }

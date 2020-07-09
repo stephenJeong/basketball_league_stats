@@ -8,6 +8,8 @@ import Landing from './Landing.jsx';
 import Navbar from './Navbar.jsx';
 import TeamsView from './team-components/TeamsView.jsx';
 import PlayersView from './players-components/PlayersView.jsx';
+import StandingsView from './standings-components/StandingsView.jsx';
+import ScheduleView from './schedule-components/ScheduleView.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -98,7 +100,7 @@ class App extends React.Component {
   setSchedule(selectedTeam) {
     // find last week and next week Sunday's dates
     const lastSunday = moment().day(0).format('M/DD/YYYY')
-    const nextSunday = moment().day(14).format('M/DD/YYYY')
+    const nextSunday = moment().day(7).format('M/DD/YYYY')
 
     // set schedule data
     // separate out schedule for selected team
@@ -196,6 +198,22 @@ class App extends React.Component {
               <Route path='/players'
                 render={(routeProps) => (
                 <PlayersView
+                  {...routeProps}
+                  playerStats={playerStats}
+                />
+                )}
+              />
+              <Route path='/standings'
+                render={(routeProps) => (
+                <StandingsView
+                  {...routeProps}
+                  playerStats={playerStats}
+                />
+                )}
+              />
+              <Route path='/schedule'
+                render={(routeProps) => (
+                <ScheduleView
                   {...routeProps}
                   playerStats={playerStats}
                 />
