@@ -116,7 +116,7 @@ hr {
 
 #hero {
   display: grid;
-  grid-template-columns: 10% 35% 5% 40% 10%;
+  grid-template-columns: 10% 45% 4% 36% 10%;
   grid-template-rows: auto;
   margin-top: 50px;
 }
@@ -156,6 +156,7 @@ hr {
   display: grid;
   grid-template-columns: 10% 20% 60% 10%;
   grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+  background-color: #E5E7E9;
 }
 
 #tv-navBar {
@@ -242,7 +243,7 @@ hr {
 }
 
 #games-glance {
-  background-color: #fff;
+  background-color: #F3F4F5;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: auto auto;
@@ -267,13 +268,29 @@ hr {
   margin: auto;
 }
 
+.teams-game {
+  margin: 0 10px 10px 10px;
+  background-color: #fff;
+}
+
 #gg-game-date {
   text-align: center;
-  font-size: 25px;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px;
+  background-color: #e6e8ea;
 }
 
 .gg-score {
-  font-size: 1.2rem;
+  font-size: 2.3rem;
+  margin-top: 0.5rem;
+}
+
+.gg-teamName {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #66737C;
 }
 
 .gg-status {
@@ -290,6 +307,7 @@ hr {
   color: #0047ba;
   font-weight: bold;
   font-size: 15px;
+  padding: 20px 0 20px 0;
   background-color: #fff;
 }
 
@@ -323,6 +341,10 @@ hr {
   color: #0a0a0a;
 }
 
+.player-photo {
+  border-radius: 50%;
+}
+
 .pl-player {
   padding: 13px 0;
   border-bottom: solid 1px #66737C;
@@ -345,7 +367,7 @@ hr {
 
 .tbl-header {
   font-weight: bold;
-  background-color: #e5e7e9;
+  background-color: #94C3FF;
 }
 
 .construction {

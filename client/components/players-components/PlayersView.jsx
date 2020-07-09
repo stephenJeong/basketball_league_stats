@@ -11,25 +11,8 @@ class PlayersView extends React.Component {
       searchTerm: '',
     }
 
-    // this.playerClickHandler = this.playerClickHandler.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
   }
-
-  // playerClickHandler(val) {
-
-  //   let playerData = {};
-
-  //   for (let i = 0; i < this.state.allPlayerStats.length; i++) {
-  //     if (this.state.allPlayerStats[i].name === val) {
-  //       playerData = this.state.allPlayerStats[i]
-  //     }
-  //   }
-
-  //   this.setState({
-  //     selectedPlayer: val,
-  //     playerStats: playerData,
-  //   });
-  // }
 
     handleSearch(e) {
       let search = e.target.value.toLowerCase();

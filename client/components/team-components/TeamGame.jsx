@@ -6,41 +6,39 @@ const TeamGame = ({ game }) => {
   const dateTime = () => {
     if (!game.time) {
       return (
-        <div>
+        <div className="teams-game">
           <div id="gg-game-date">
             {date}
           </div>
-        <div id="gg-game-sched">
-           <div className="gg-score">
-          </div>
-          <div className="gg-status">
-            NO GAME
-          </div>
-          <div className="gg-score">
+          <div id="gg-game-sched">
+            <div className="gg-score"></div>
+            <div className="gg-status">
+              NO GAME
+            </div>
+            <div className="gg-score"></div>
           </div>
         </div>
-      </div>
       )
     } else {
       return (
-        <div>
+        <div className="teams-game">
           <div id="gg-game-date">
             {date} @ {time}
           </div>
-        <div id="gg-game-sched">
-          <div className="gg-score">
-            {awayTeam}<br/>
-            {awayScore}
-          </div>
-          <div className="gg-status">
-            FINAL
-          </div>
-          <div className="gg-score">
-            {homeTeam}<br/>
-            {homeScore}
+          <div id="gg-game-sched">
+            <div>
+              <p className="gg-teamName">{awayTeam}</p>
+              <p className="gg-score">{awayScore}</p>
+            </div>
+            <div className="gg-status">
+              FINAL
+            </div>
+            <div>
+            <p className="gg-teamName">{homeTeam}</p>
+            <p className="gg-score">{homeScore}</p>
+            </div>
           </div>
         </div>
-      </div>
       )
     }
   }
