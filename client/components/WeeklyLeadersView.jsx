@@ -1,12 +1,15 @@
 import React from 'react';
 import WeeklyLeaders from './WeeklyLeaders.jsx';
+import LoadingSpinner from './LoadingSpinner.jsx';
 
 const WeeklyLeadersView = ({leaders}) => {
   return (
     <div>
       <h2>Weekly Leaders</h2>
       <hr />
-      <div className="w-leaders-tbl">
+      {leaders.length === 0 ?
+        <LoadingSpinner /> :
+        <div className="w-leaders-tbl">
         <div className="tbl-header">Name</div>
         <div className="tbl-header">Team</div>
         <div className="tbl-header">Total Points</div>
@@ -15,6 +18,7 @@ const WeeklyLeadersView = ({leaders}) => {
             <WeeklyLeaders player={elem} key={elem.name} />
           ))}
       </div>
+      }
     </div>
   );
 }

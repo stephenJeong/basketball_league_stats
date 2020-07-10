@@ -275,7 +275,7 @@ hr {
 
 #gg-game-date {
   text-align: center;
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 1rem;
   padding: 10px;
   background-color: #e6e8ea;
@@ -371,8 +371,13 @@ hr {
 }
 
 .construction {
+  max-width: 1000px;
   left: 50%;
   position: fixed;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.loader {
+  margin: auto;
 }
