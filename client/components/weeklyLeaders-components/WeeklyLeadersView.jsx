@@ -1,6 +1,6 @@
 import React from 'react';
 import WeeklyLeaders from './WeeklyLeaders.jsx';
-import LoadingSpinner from './LoadingSpinner.jsx';
+import LoadingSpinner from '../LoadingSpinner.jsx';
 
 const WeeklyLeadersView = ({leaders}) => {
   return (

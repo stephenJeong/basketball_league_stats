@@ -1,6 +1,6 @@
 import React from 'react';
 import Announcements from './Announcements.jsx';
-import WeeklyLeadersView from './WeeklyLeadersView.jsx';
+import WeeklyLeadersView from './weeklyLeaders-components/WeeklyLeadersView.jsx';
 
 const Hero = ({ leaders }) => (
   <div id="hero">

@@ -1,5 +1,5 @@
 import React from 'react';
-import WeeklySchedule from './WeeklySchedule.jsx';
+import WeeklySchedule from './weeklyLeaders-components/WeeklySchedule.jsx';
 import Hero from './Hero.jsx';
 
 const Landing = ({ leaders, allSchedule }) => (

@@ -1,7 +1,8 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 const TeamGame = ({ game }) => {
-  let { date, awayScore, awayTeam, homeScore, homeTeam, time, gameWeek } = game;
+  let { date, awayScore, awayTeam, homeScore, homeTeam, time } = game;
 
   const dateTime = () => {
     if (!game.time) {
@@ -27,15 +28,15 @@ const TeamGame = ({ game }) => {
           </div>
           <div id="gg-game-sched">
             <div>
-              <p className="gg-teamName">{awayTeam}</p>
+              <p className="gg-teamName text-overflow">{awayTeam}</p>
               <p className="gg-score">{awayScore}</p>
             </div>
             <div className="gg-status">
               FINAL
             </div>
             <div>
-            <p className="gg-teamName">{homeTeam}</p>
-            <p className="gg-score">{homeScore}</p>
+              <p className="gg-teamName text-overflow">{homeTeam}</p>
+              <p className="gg-score">{homeScore}</p>
             </div>
           </div>
         </div>

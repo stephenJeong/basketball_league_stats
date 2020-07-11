@@ -287,7 +287,7 @@ hr {
 }
 
 .gg-teamName {
-  font-size: 1rem;
+  font-size: 1vw;
   font-weight: bold;
   margin-bottom: 0;
   color: #66737C;
@@ -380,4 +380,14 @@ hr {
 
 .loader {
   margin: auto;
+}
+
+.text-overflow {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
