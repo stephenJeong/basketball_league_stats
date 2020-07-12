@@ -46,7 +46,7 @@ hr {
 /*  Start weekly schedule styles */
 .w-sched {
   display: grid;
-  grid-template-columns: 125px repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
   grid-template-rows: auto;
   height: 80px;
   background-color: #e5e7e9;
@@ -54,8 +54,7 @@ hr {
 
 .w-sched-item {
   grid-row: 1 / 1;
-  width: 100px;
-  margin: auto 50px auto 50px;
+  margin: auto;
 }
 
 .w-sched-date {
@@ -276,7 +275,7 @@ hr {
 #gg-game-date {
   text-align: center;
   /* font-weight: bold; */
-  font-size: 1rem;
+  font-size: 1vw;
   padding: 10px;
   background-color: #e6e8ea;
 }

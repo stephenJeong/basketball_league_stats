@@ -21,6 +21,7 @@ class App extends React.Component {
       sortedTeams: [],
       allSchedule: [],
       selectedTeam: '',
+      nextSunday: '',
       teamSchedule: {
         lastWeek: {
           date: '',
@@ -42,13 +43,6 @@ class App extends React.Component {
   componentDidMount() {
     this.getAllStats();
   }
-
-  // compnentDidUpdate(prevProps, prevState) {
-  //   console.log('here')
-  //   if (prevProps.selectedTeam !== this.state.selectedTeam) {
-  //     this.setSchedule();
-  //   }
-  // }
 
   getAllStats() {
     axios.get('/api/all')
@@ -123,11 +117,10 @@ class App extends React.Component {
       }
     });
 
-
-
     if (teamSchedule !== {}) {
       this.setState({
         teamSchedule: teamSchedule,
+        nextSunday: nextSunday,
       });
     }
   }
@@ -164,7 +157,7 @@ class App extends React.Component {
   }
 
   render() {
-    let { playerStats, leaders, teamStats, sortedTeams, selectedTeam, teamSchedule, allSchedule } = this.state;
+    let { playerStats, leaders, teamStats, sortedTeams, selectedTeam, teamSchedule, allSchedule, nextSunday } = this.state;
 
     return (
       <div>
@@ -179,6 +172,8 @@ class App extends React.Component {
                     playerStats={playerStats}
                     leaders={leaders}
                     allSchedule={allSchedule}
+                    nextSunday={nextSunday}
+                    teamStats={teamStats}
                   />
                 )}
               />

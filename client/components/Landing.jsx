@@ -1,10 +1,10 @@
 import React from 'react';
-import WeeklySchedule from './weeklyLeaders-components/WeeklySchedule.jsx';
+import WeeklyScheduleView from './weeklySchedule-components/WeeklyScheduleView.jsx';
 import Hero from './Hero.jsx';
 
-const Landing = ({ leaders, allSchedule }) => (
+const Landing = ({ leaders, allSchedule, nextSunday, teamStats }) => (
   <div>
-    <WeeklySchedule allSchedule={allSchedule} />
+    <WeeklyScheduleView allSchedule={allSchedule} nextSunday={nextSunday} teamStats={teamStats} />
     <Hero leaders={leaders} />
   </div>
 );
