@@ -10,6 +10,8 @@ import TeamsView from './team-components/TeamsView.jsx';
 import PlayersView from './players-components/PlayersView.jsx';
 import StandingsView from './standings-components/StandingsView.jsx';
 import ScheduleView from './schedule-components/ScheduleView.jsx';
+import LoadingSpinner from './LoadingSpinner.jsx';
+import Loading from 'react-loading';
 
 class App extends React.Component {
   constructor(props) {
@@ -159,11 +161,11 @@ class App extends React.Component {
   render() {
     let { playerStats, leaders, teamStats, sortedTeams, selectedTeam, teamSchedule, allSchedule, nextSunday } = this.state;
 
-    return (
-      <div>
-        <BrowserRouter>
+    const loading = () => {
+      if (allSchedule.length > 0 && playerStats.length > 0) {
+        return (
           <div>
-            <Navbar />
+          <Navbar />
             <Switch>
               <Route exact path="/"
                 render={(routeProps) => (
@@ -214,8 +216,20 @@ class App extends React.Component {
                 />
                 )}
               />
-            </Switch>
+          </Switch>
           </div>
+        )
+      } else {
+        return (
+          <LoadingSpinner />
+        );
+      }
+    }
+
+    return (
+      <div>
+        <BrowserRouter>
+        {loading()}
         </BrowserRouter>
       </div>
     );

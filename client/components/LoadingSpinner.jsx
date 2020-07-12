@@ -3,7 +3,7 @@ import ReactLoading from 'react-loading';
 
 const LoadingSpinner = () => {
   return (
-    <ReactLoading className="loader" type="spin" color="#0047ba" width="15%" />
+    <ReactLoading className="loader" type="bars" color="#e5e7e9" width="10%" />
   );
 }
 
