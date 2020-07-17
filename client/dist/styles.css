@@ -46,7 +46,7 @@ hr {
 /*  Start weekly schedule styles */
 .w-sched {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
   grid-template-rows: auto;
   height: 80px;
   background-color: #e5e7e9;
@@ -66,7 +66,7 @@ hr {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: auto;
-  font-size: 12px;
+  font-size: 0.8rem;
   row-gap: 5px;
   width: 100%;
   border: solid 1px #000;
@@ -110,6 +110,8 @@ hr {
 
 .mu-team-rec {
   color: #5e7082;
+  text-align: right;
+  padding-right: 5px;
 }
 /*  End weekly schedule styles */
 
@@ -188,7 +190,7 @@ hr {
   padding: 10px;
   color: #0B5BE1;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .tl-teamName:hover {
@@ -218,7 +220,7 @@ hr {
   background-color: #0B153C;
   color: #fff;
   text-align: center;
-  font-size: 12px;
+  font-size: 0.8rem;
 }
 
 #teamStats div {
@@ -228,11 +230,11 @@ hr {
 
 .ts-stat {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.2rem;
 }
 
 #wl-record {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .winLossRec {
@@ -275,8 +277,8 @@ hr {
 #gg-game-date {
   text-align: center;
   /* font-weight: bold; */
-  font-size: 1vw;
-  padding: 10px;
+  font-size: 1rem;
+  padding: 0.7rem;
   background-color: #e6e8ea;
 }
 
@@ -286,7 +288,7 @@ hr {
 }
 
 .gg-teamName {
-  font-size: 1vw;
+  font-size: 1rem;
   font-weight: bold;
   margin-bottom: 0;
   color: #66737C;
@@ -327,7 +329,7 @@ hr {
 }
 
 #players-list input {
-  height: 28px;
+  height: 1.75rem;
   border-radius: 4px;
   display: block;
   width: 30%;
@@ -336,7 +338,6 @@ hr {
   border: 1px solid #cacaca;
   background-color: #fefefe;
   box-shadow: inset 0 1px 2px rgba(10,10,10,0.1);
-  font-size: 1rem;
   color: #0a0a0a;
 }
 
@@ -389,4 +390,15 @@ hr {
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+}
+
+@media screen and (min-width: 320px) {
+  html {
+    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  }
+}
+@media screen and (min-width: 1000px) {
+  html {
+    font-size: 16px;
+  }
 }
