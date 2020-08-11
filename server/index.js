@@ -15,7 +15,7 @@ app.use(cors());
 async function getData(pIndex, tIndex, sIndex, callback) {
   const doc = new GoogleSpreadsheet('1uyoyCE2tc3tnPO7GeVGUUbjCR2-IwDu-HSodzpYV5og');
   await doc.useServiceAccountAuth(creds);
-  await doc.loadInfo(); // loads document properties and worksheets
+  await doc.loadInfo(); // loads document properties and worksheet
 
   console.log(`Google Sheet Title: ${doc.title}`);
 
