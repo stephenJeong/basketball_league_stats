@@ -2,7 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const creds = require('../client_secret.json');
-const PORT = 3000;
+const port = process.env.PORT;
+if (port === null || port === "") {
+  port = 8000;
+}
 
 const app = express();
 const cors = require('cors');
@@ -107,6 +110,6 @@ app.get('/api/all', (req, res) => {
   })
 });
 
-app.listen(PORT, () => {
-  console.log(`app listening on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`app listening on port ${port}`);
 });
