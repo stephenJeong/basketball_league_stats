@@ -4,7 +4,7 @@ const { GoogleSpreadsheet } = require('google-spreadsheet');
 const creds = require('../client_secret.json');
 const port = process.env.PORT;
 if (port === null || port === "") {
-  port = 8000;
+  port = 8080;
 }
 
 const app = express();
