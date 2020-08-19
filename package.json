@@ -1,6 +1,9 @@
 {
   "name": "basketball_league_stats",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.x"
+  },
   "description": "An app to keep track of basketball league stats",
   "main": "index.js",
   "scripts": {
