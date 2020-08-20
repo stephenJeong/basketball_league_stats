@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const creds = require('../client_secret.json');
-const port = process.env.PORT;
+const port = 8080;
 if (port === null || port === "") {
   port = 8080;
 }
