@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const creds = require('../client_secret.json');
+const creds = require('../client_secret');
 const port = 8080;
 if (port === null || port === "") {
   port = 8080;
