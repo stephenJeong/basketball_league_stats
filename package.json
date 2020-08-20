@@ -9,6 +9,7 @@
   "scripts": {
     "start": "nodemon server/index.js",
     "build": "webpack -d --watch",
+    "heroku-postbuild": "webpack --d --watch",
     "lint": "eslint *.js client/**/*.jsx"
   },
   "repository": {
