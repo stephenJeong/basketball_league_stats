@@ -12,6 +12,10 @@
     "heroku-postbuild": "webpack -p",
     "lint": "eslint *.js client/**/*.jsx"
   },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stephenJeong/basketball_league_stats.git"

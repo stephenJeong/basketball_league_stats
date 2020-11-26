@@ -8,6 +8,7 @@ if (port === null || port === "") {
   port = 8080;
 }
 
+// console.log(process.env.creds);
 const app = express();
 const cors = require('cors');
 

@@ -17,7 +17,7 @@ const WeeklyScheduleView = ({ allSchedule, nextSunday, teamStats }) => {
   return (
     <div className="w-sched">
       <div className="w-sched-item w-sched-date">
-        {moment().day(7).format('MMMM Do')}
+        Next Sunday: {moment().day(7).format('MMMM Do')}
       </div>
       {upcomingSchedule.map((game) => {
         return (

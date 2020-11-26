@@ -3,7 +3,7 @@ import Announcements from './Announcements.jsx';
 import WeeklyLeadersView from './weeklyLeaders-components/WeeklyLeadersView.jsx';
 
 const Hero = ({ leaders }) => (
-  <div id="hero">
+  <div className="hero">
     <div id="announcements">
       <Announcements />
     </div>
