@@ -20,46 +20,44 @@ class NavBar extends React.Component {
   render() {
     return (
       <div className="navBar">
-        <div className="navBar-item">
-          <Link
-            to="/"
-            className={this.state.activePage === 'home' ? 'navBar-links-clicked': null}
-            onClick={() => {this.toggleClass('home')}}>
-              Home
-          </Link>
-        </div>
-        <div className="navBar-item">
-          <Link
-            to="/schedule"
-            className={this.state.activePage === 'schedule' ? 'navBar-links-clicked': null}
-            onClick={() => {this.toggleClass('schedule')}}>
-            Schedule
-          </Link>
-        </div>
-        <div className="navBar-item">
-          <Link
-            to="/teams"
-            className={this.state.activePage === 'teams' ? 'navBar-links-clicked': null}
-            onClick={() => {this.toggleClass('teams')}}>
-            Teams
-          </Link>
-        </div>
-        <div className="navBar-item">
-          <Link
-            to="/standings"
-            className={this.state.activePage === 'standings' ? 'navBar-links-clicked': null}
-            onClick={() => {this.toggleClass('standings')}}>
-            Standings
-          </Link>
-        </div>
-        <div className="navBar-item">
-          <Link
-            to="/players"
-            className={this.state.activePage === 'players' ? 'navBar-links-clicked': null}
-            onClick={() => {this.toggleClass('players')}}>
-            Players
-          </Link>
-        </div>
+        <nav>
+          <input type="checkbox" id="nav-toggle" />
+          <label for="nav-toggle" class="burger-menu">
+            <img src="menu.png" alt="menu" />
+          </label>
+          <div class="main-menu">
+            <Link
+              to="/"
+              className={this.state.activePage === 'home' ? 'navBar-links-clicked': null}
+              onClick={() => {this.toggleClass('home')}}>
+                Home
+            </Link>
+            <Link
+              to="/schedule"
+              className={this.state.activePage === 'schedule' ? 'navBar-links-clicked': null}
+              onClick={() => {this.toggleClass('schedule')}}>
+              Schedule
+            </Link>
+            <Link
+              to="/teams"
+              className={this.state.activePage === 'teams' ? 'navBar-links-clicked': null}
+              onClick={() => {this.toggleClass('teams')}}>
+              Teams
+            </Link>
+            <Link
+              to="/standings"
+              className={this.state.activePage === 'standings' ? 'navBar-links-clicked': null}
+              onClick={() => {this.toggleClass('standings')}}>
+              Standings
+            </Link>
+            <Link
+              to="/players"
+              className={this.state.activePage === 'players' ? 'navBar-links-clicked': null}
+              onClick={() => {this.toggleClass('players')}}>
+              Players
+            </Link>
+          </div>
+        </nav>
       </div>
     )
   }

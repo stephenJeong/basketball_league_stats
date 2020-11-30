@@ -20,17 +20,10 @@ hr {
 
 .navBar {
   display: grid;
-  grid-template-columns: fit-content(5%) fit-content(10%) fit-content(10%) fit-content(10%) fit-content(20%) 1fr;
-  grid-template-rows: auto;
-  height: 6vh;
+  justify-items: center;
   background-color: #1D428A;
-  color: #fff;
-}
-
-.navBar-item {
-  grid-column-start: 1 / span 1;
-  grid-row: 1 / 1;
-  margin: auto 50px auto 50px;
+  width: 100%;
+  max-width: 1720px;
 }
 
 .navBar-links-clicked {
@@ -38,9 +31,27 @@ hr {
   text-decoration-color: #fff;
 }
 
-.navBar-item a {
+.main-menu a {
   color: #fff;
   text-decoration: none;
+}
+
+.burger-menu {
+  display: inline-block;
+  width: 40px;
+}
+
+.main-menu {
+  display: none;
+}
+
+#nav-toggle:checked ~ .main-menu {
+  display: grid;
+  grid-row: 2;
+}
+
+#weeklyLeaders {
+  margin-top: 2rem;
 }
 
 /*  Start weekly schedule styles */
@@ -386,13 +397,14 @@ hr {
     font-size: calc(16px + 6 * ((100vw - 320px) / 680));
   }
 }
+
 @media (min-width: 1000px) {
   html {
     font-size: 16px;
   }
 }
 
-@media (min-width: 768) {
+@media (min-width: 600px) {
   .hero {
     display: grid;
     grid-template-columns: 10% 45% 4% 36% 10%;
@@ -408,5 +420,25 @@ hr {
   #weeklyLeaders {
     grid-column: 4 / 4;
     grid-row: 1 / 1;
+    margin: 0;
+  }
+
+  .navBar {
+    display: grid;
+    grid-template-columns: fit-content(5%) fit-content(10%) fit-content(10%) fit-content(10%) fit-content(20%) 1fr;
+    grid-template-rows: auto;
+    height: 6vh;
+    background-color: #1D428A;
+    color: #fff;
+  }
+
+  .main-menu {
+    grid-column-start: 1 / span 1;
+    grid-row: 1 / 1;
+    margin: auto 50px auto 50px;
+  }
+
+  #nav-toggle, .burger-menu {
+    display: none;
   }
 }
