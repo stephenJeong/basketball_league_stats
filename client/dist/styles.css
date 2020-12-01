@@ -456,23 +456,20 @@ nav input {
   .navBar {
     width: 100%;
     background-color: #1D428A;
-    padding-top: 1.5rem;
-  }
+    padding-top: 1.5rem;  }
 
   .main-menu {
     display: flex;
     flex-flow: row wrap;
-    /* grid-template-columns: auto; */
-    /* grid-template-columns: auto; */
-    /* grid-template-rows: auto; */
     height: 6vh;
     color: #fff;
+    padding-left: 2.5rem;
   }
 
   .main-menu a {
     font-weight: 400;
     letter-spacing: 0.5px;
-    padding-right: 1.5rem;
+    padding-right: 0.3rem 0 0.7rem 3rem;
   }
 
   #nav-toggle, .burger-menu {
