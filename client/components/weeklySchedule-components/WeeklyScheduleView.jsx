@@ -14,6 +14,8 @@ const WeeklyScheduleView = ({ allSchedule, nextSunday, teamStats }) => {
     }
   })
 
+  console.log(`nextSunday: ${nextSunday}`)
+
   return (
     <div className="w-sched">
       <div className="w-sched-item w-sched-date">

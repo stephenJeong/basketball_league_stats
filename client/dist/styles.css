@@ -2,7 +2,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: 100;
   background-color: #fff;
-  font-size: 2.5vmin;
+  font-size: 2.9vmin;
 }
 
 h1 {
@@ -19,6 +19,15 @@ hr {
   margin-bottom: 20px;
 }
 
+.hero {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem 0;
+  overflow: auto;
+  max-height: 100%;
+}
+
+/* NavBar */
 nav {
   display: grid;
   background-color: #1D428A;
@@ -54,7 +63,6 @@ nav a:hover {
 
 .burger-menu {
   display: inline-block;
-  width: 40px;
   padding: 1rem;
 }
 
@@ -82,21 +90,12 @@ nav input {
 
 /*  Start weekly schedule styles */
 .w-sched {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
-  grid-template-rows: auto;
-  height: 80px;
   background-color: #e5e7e9;
-}
-
-.w-sched-item {
-  grid-row: 1 / 1;
-  margin: auto;
 }
 
 .w-sched-date {
   font-weight: bold;
-  margin-left: 50px;
+  padding: 1rem;
 }
 
 .matchup {
@@ -105,7 +104,6 @@ nav input {
   grid-template-rows: auto;
   font-size: 0.8rem;
   row-gap: 5px;
-  width: 100%;
   border: solid 1px #000;
   background-color: #fff;
 }
@@ -151,12 +149,6 @@ nav input {
   padding-right: 5px;
 }
 /*  End weekly schedule styles */
-
-.hero {
-  display: flex;
-  flex-flow: column wrap;
-  margin: 3rem 0;
-}
 
 .w-leaders-tbl {
   display: grid;
@@ -398,6 +390,7 @@ nav input {
 
 .construction {
   max-width: 1000px;
+  width: 100%;
   left: 50%;
   position: fixed;
   top: 50%;
@@ -441,6 +434,7 @@ nav input {
     margin: 0;
   }
 
+  /* NavBar */
   nav {
     display: grid;
     width: 100%;
@@ -468,4 +462,76 @@ nav input {
   #nav-toggle, .burger-menu {
     display: none;
   }
+
+  /*  Start weekly schedule styles */
+  .w-sched {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+    grid-template-rows: auto;
+    height: 80px;
+    background-color: #e5e7e9;
+  }
+
+  .w-sched-item {
+    grid-row: 1 / 1;
+    margin: auto;
+  }
+
+  .w-sched-date {
+    font-weight: bold;
+    margin-left: 50px;
+  }
+
+  .matchup {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+    font-size: 0.8rem;
+    row-gap: 5px;
+    width: 100%;
+    border: solid 1px #000;
+    background-color: #fff;
+  }
+
+  .mu-time {
+    grid-column: 1 / 2;
+    grid-row: 1 / 1;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+
+  .mu-home {
+    grid-column: 1 / 1;
+    grid-row: 2 / 2;
+    margin-left: 5px;
+  }
+
+  .mu-home-rec {
+    grid-column: 2 / 2;
+    grid-row: 2 / 2;
+  }
+
+  .mu-away {
+    grid-column: 1 / 1;
+    grid-row: 3 / 3;
+    margin: 0px 0px 5px 5px;
+  }
+
+  .mu-away-rec {
+    grid-column: 2 / 2;
+    grid-row: 3 / 3;
+  }
+
+  .mu-team {
+    font-weight: bold;
+    color: #171b1f;
+  }
+
+  .mu-team-rec {
+    color: #5e7082;
+    text-align: right;
+    padding-right: 5px;
+  }
+  /*  End weekly schedule styles */
 }

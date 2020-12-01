@@ -23,7 +23,7 @@ class NavBar extends React.Component {
       <div className="navBar">
         <nav>
           <input type="checkbox" id="nav-toggle" />
-          <label for="nav-toggle" class="burger-menu">
+          <label htmlFor="nav-toggle" className="burger-menu">
             <img src={logo} alt="menu" />
           </label>
           <div className="main-menu">
