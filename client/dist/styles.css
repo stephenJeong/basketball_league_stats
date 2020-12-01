@@ -2,6 +2,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: 100;
   background-color: #fff;
+  font-size: 2.5vmin;
 }
 
 h1 {
@@ -59,7 +60,7 @@ nav a:hover {
 
 .burger-menu img {
   display: inline-block;
-  width: 40px;
+  width: 30px;
 }
 
 nav input {
@@ -417,19 +418,11 @@ nav input {
   hyphens: auto;
 }
 
-@media (min-width: 320px) {
-  html {
-    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
-  }
-}
-
-@media (min-width: 1000px) {
-  html {
-    font-size: 16px;
-  }
-}
-
 @media (min-width: 600px) {
+  body {
+    font-size: 1.8vmin;
+  }
+
   .hero {
     display: grid;
     grid-template-columns: 10% 45% 4% 36% 10%;
