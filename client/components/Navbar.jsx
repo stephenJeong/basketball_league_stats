@@ -23,36 +23,36 @@ class NavBar extends React.Component {
         <nav>
           <input type="checkbox" id="nav-toggle" />
           <label for="nav-toggle" class="burger-menu">
-            <img src="menu.png" alt="menu" />
+            <img src={require('../../menu.png')} alt="menu" />
           </label>
-          <div class="main-menu">
+          <div className="main-menu">
             <Link
               to="/"
-              className={this.state.activePage === 'home' ? 'navBar-links-clicked': null}
+              className={this.state.activePage === 'home' ? 'navBar-links-clicked navBar-item navBar-item': 'navBar-item'}
               onClick={() => {this.toggleClass('home')}}>
                 Home
             </Link>
             <Link
               to="/schedule"
-              className={this.state.activePage === 'schedule' ? 'navBar-links-clicked': null}
+              className={this.state.activePage === 'schedule' ? 'navBar-links-clicked navBar-item': 'navBar-item'}
               onClick={() => {this.toggleClass('schedule')}}>
               Schedule
             </Link>
             <Link
               to="/teams"
-              className={this.state.activePage === 'teams' ? 'navBar-links-clicked': null}
+              className={this.state.activePage === 'teams' ? 'navBar-links-clicked navBar-item': 'navBar-item'}
               onClick={() => {this.toggleClass('teams')}}>
               Teams
             </Link>
             <Link
               to="/standings"
-              className={this.state.activePage === 'standings' ? 'navBar-links-clicked': null}
+              className={this.state.activePage === 'standings' ? 'navBar-links-clicked navBar-item': 'navBar-item'}
               onClick={() => {this.toggleClass('standings')}}>
               Standings
             </Link>
             <Link
               to="/players"
-              className={this.state.activePage === 'players' ? 'navBar-links-clicked': null}
+              className={this.state.activePage === 'players' ? 'navBar-links-clicked navBar-item': 'navBar-item'}
               onClick={() => {this.toggleClass('players')}}>
               Players
             </Link>

@@ -19,6 +19,13 @@ module.exports = {
           presets: ['react', 'es2015'],
         },
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [{
+          loader: 'file-loader',
+          options: {},
+        }],
+      },
     ],
   },
 };
