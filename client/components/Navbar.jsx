@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../menu.png';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class NavBar extends React.Component {
         <nav>
           <input type="checkbox" id="nav-toggle" />
           <label for="nav-toggle" class="burger-menu">
-            <img src={require('../../menu.png')} alt="menu" />
+            <img src={logo} alt="menu" />
           </label>
           <div className="main-menu">
             <Link

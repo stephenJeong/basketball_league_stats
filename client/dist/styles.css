@@ -38,7 +38,7 @@ nav a:hover {
 .main-menu a {
   font-weight: 300;
   letter-spacing: 0.5px;
-  padding: 0.3rem 0 0.7rem 3rem;
+  padding: 0.3rem 0 0.7rem 1rem;
 }
 
 .main-menu a {
@@ -54,7 +54,17 @@ nav a:hover {
 .burger-menu {
   display: inline-block;
   width: 40px;
+  padding: 1rem;
 }
+
+.burger-menu img {
+  display: inline-block;
+  width: 40px;
+}
+
+nav input {
+   display: none;
+ }
 
 .main-menu {
   display: none;
