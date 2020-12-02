@@ -278,7 +278,7 @@ nav input {
 }
 
 .gg-score {
-  font-size: 2.3rem;
+  font-size: 1.7rem;
   margin-top: 0.5rem;
 }
 
@@ -456,7 +456,7 @@ nav input {
 
   .w-sched-date {
     font-weight: bold;
-    margin-left: 50px;
+    padding-left: 3.5rem;
   }
 
   .matchup {
@@ -557,6 +557,8 @@ nav input {
 }
 
 .teamList {
+  display: grid;
+  grid-template-columns: 1fr;
   background-color: #fff;
   padding: 0px 5px 0px 5px;
 }
