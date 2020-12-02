@@ -148,8 +148,8 @@ nav input {
   text-align: right;
   padding-right: 5px;
 }
-/*  End weekly schedule styles */
 
+/* Weekly leaders table */
 .w-leaders-tbl {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -171,36 +171,18 @@ nav input {
   max-width: 100%;
 }
 
-#teamsView {
-  display: grid;
-  grid-template-columns: 10% 20% 60% 10%;
-  grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+/* teamsView */
+.teamsView {
+  display: flex;
+  flex-direction: column;
   background-color: #E5E7E9;
 }
 
-#tv-navBar {
-  grid-column: 1 / 5;
-  grid-row: 1 / 1;
-}
-
-#tv-teamList {
-  grid-column: 2 / 2;
-  grid-row: 2 / 5;
-}
-
-#tv-teamOverview {
-  grid-column: 3 / 3;
-  grid-row: 2 / 2;
-}
-
-#tv-teamGames {
-  grid-column: 3 / 3;
-  grid-row: 3 / 3;
-}
-
-#tv-teamPlayers {
-  grid-column: 3 / 3;
-  grid-row: 4 / 4;
+.teamList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #fff;
+  padding: 0px 5px 0px 5px;
 }
 
 .tl-teamName {
@@ -213,11 +195,6 @@ nav input {
 
 .tl-teamName:hover {
   color: #f26178;
-}
-
-.teamList {
-  background-color: #fff;
-  padding: 0px 5px 0px 5px;
 }
 
 .to-name {
@@ -534,4 +511,163 @@ nav input {
     padding-right: 5px;
   }
   /*  End weekly schedule styles */
+  /* teamsView */
+.teamsView {
+  display: grid;
+  grid-template-columns: 10% 20% 60% 10%;
+  grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+  background-color: #E5E7E9;
+}
+
+#tv-navBar {
+  grid-column: 1 / 5;
+  grid-row: 1 / 1;
+}
+
+#tv-teamList {
+  grid-column: 2 / 2;
+  grid-row: 2 / 5;
+}
+
+#tv-teamOverview {
+  grid-column: 3 / 3;
+  grid-row: 2 / 2;
+}
+
+#tv-teamGames {
+  grid-column: 3 / 3;
+  grid-row: 3 / 3;
+}
+
+#tv-teamPlayers {
+  grid-column: 3 / 3;
+  grid-row: 4 / 4;
+}
+
+.tl-teamName {
+  border-bottom: 1px solid #CCD0D3;
+  padding: 10px;
+  color: #0B5BE1;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.tl-teamName:hover {
+  color: #f26178;
+}
+
+.teamList {
+  background-color: #fff;
+  padding: 0px 5px 0px 5px;
+}
+
+.to-name {
+  height: 100px;
+  padding: 50px 0px 0px 50px;
+  background-color: #FDB927;
+  color: #fff;
+}
+
+.to-stats {
+  background-color: #0B153C;
+}
+
+#teamStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  grid-template-rows: auto;
+  background-color: #0B153C;
+  color: #fff;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+#teamStats div {
+  margin: 15px 5px 10px 5px;
+  border-right: solid 1px #fff;
+}
+
+.ts-stat {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#wl-record {
+  font-size: 1rem;
+}
+
+.winLossRec {
+  background-color: #fff;
+  color: #000;
+  width: 20px;
+}
+
+#games-glance {
+  background-color: #F3F4F5;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+}
+
+#gg-title {
+  grid-column: 1 / span 2;
+  grid-row: 1 / 1;
+  padding: 10px 0px 10px 20px;
+}
+
+#gg-game-sched {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  text-transform: uppercase;
+  text-align: center;
+  height: 100px;
+}
+
+#gg-game-sched div {
+  margin: auto;
+}
+
+.teams-game {
+  margin: 0 10px 10px 10px;
+  background-color: #fff;
+}
+
+#gg-game-date {
+  text-align: center;
+  /* font-weight: bold; */
+  font-size: 1rem;
+  padding: 0.7rem;
+  background-color: #e6e8ea;
+}
+
+.gg-score {
+  font-size: 2.3rem;
+  margin-top: 0.5rem;
+}
+
+.gg-teamName {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #66737C;
+}
+
+.gg-status {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#teamPlayers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: auto;
+  grid-row-gap: 20px;
+  text-align: center;
+  color: #0047ba;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 20px 0 20px 0;
+  background-color: #fff;
+}
 }

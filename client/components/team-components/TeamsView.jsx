@@ -6,7 +6,7 @@ import TeamPlayersView from './TeamPlayersView.jsx';
 
 const TeamsView = ({ teamClickHandler, teamStats, playerStats, sortedTeams, selectedTeam, schedule }) => {
   return (
-    <div id="teamsView">
+    <div className="teamsView">
       <div id="tv-teamList">
         <TeamList teamClickHandler={teamClickHandler} teams={teamStats} players={playerStats} sortedTeams={sortedTeams} />
       </div>
