@@ -160,6 +160,7 @@ class App extends React.Component {
 
   render() {
     let { playerStats, leaders, teamStats, sortedTeams, selectedTeam, teamSchedule, allSchedule, nextSunday } = this.state;
+    console.log('process.env.project_id', process.env.project_id);
 
     const loading = () => {
       if (allSchedule.length > 0 && playerStats.length > 0) {
