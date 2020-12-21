@@ -3,14 +3,28 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config();
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const creds = require('../client_secret');
-const port = 8080;
-if (port === null || port === "") {
-  port = 8080;
-}
+const port = process.env.PORT || 8080;
 
-// console.log(process.env.creds);
+// console.log('process.env', process.env);
 const app = express();
 const cors = require('cors');
+console.log('NODE_ENV', process.env.NODE_ENV);
+console.log('process.env.project_id', process.env.project_id);
+
+if (process.env.NODE_ENV === 'production') {
+  creds = {
+      "type": process.env.type,
+      "project_id": process.env.project_id,
+      "private_key_id": process.env.private_key_id,
+      "private_key": process.env.private_key,
+      "client_email": process.env.client_email,
+      "client_id": process.env.client_id,
+      "auth_uri": process.env.auth_uri,
+      "token_uri": process.env.token_uri,
+      "auth_provider_x509_cert_url": process.env.auth_provider_x509_cert_url,
+      "client_x509_cert_url": process.env.client_x509_cert_url,
+  }
+}
 
 app.use(express.static('./client/dist'));
 app.use(bodyParser.json());
