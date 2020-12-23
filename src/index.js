@@ -30,7 +30,6 @@ console.log('process.env.project_id', process.env.project_id);
 // }
 
 // app.use(express.static('./client/dist'));
-app.use('/.netlify/functions/index', router);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
@@ -134,10 +133,11 @@ router.get('/api/data', (req, res) => {
   })
 });
 
-
+app.use('/.netlify/functions/index', router);
 
 // app.listen(port, () => {
 //   console.log(`app listening on port ${port}`);
 // });
 
+module.exports = app;
 module.exports.handler = serverless(app);

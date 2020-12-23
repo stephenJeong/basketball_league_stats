@@ -5,4 +5,5 @@ module.exports = function(app) {
     proxy('/.netlify/functions/index/api', {
       target: 'http://localhost:9000/',
     }),
-  )};
+  );
+};
