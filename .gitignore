@@ -54,3 +54,5 @@ jspm_packages/
 
 bundle.js
 client_secret.json
+# Local Netlify folder
+.netlify

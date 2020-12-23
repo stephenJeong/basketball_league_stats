@@ -47,7 +47,7 @@ class App extends React.Component {
   }
 
   getAllStats() {
-    axios.get('/api/all')
+    axios.get('/')
       .then((res) => {
         // set player data
         const sortedPlayers = this.reverseSortPlayers(res.data[0].players);
@@ -159,8 +159,8 @@ class App extends React.Component {
   }
 
   render() {
+    console.log('testing')
     let { playerStats, leaders, teamStats, sortedTeams, selectedTeam, teamSchedule, allSchedule, nextSunday } = this.state;
-    console.log('process.env.project_id', process.env.project_id);
 
     const loading = () => {
       if (allSchedule.length > 0 && playerStats.length > 0) {

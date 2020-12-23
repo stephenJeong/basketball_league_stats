@@ -1,43 +1,57 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const serverless = require('serverless-http');
 const dotenv = require('dotenv').config();
 const { GoogleSpreadsheet } = require('google-spreadsheet');
-const creds = require('../client_secret');
+let creds = require('../client_secret');
 const port = process.env.PORT || 8080;
 
 // console.log('process.env', process.env);
 const app = express();
+const router = express.Router();
+
 const cors = require('cors');
 console.log('NODE_ENV', process.env.NODE_ENV);
 console.log('process.env.project_id', process.env.project_id);
 
-if (process.env.NODE_ENV === 'production') {
-  creds = {
-      "type": process.env.type,
-      "project_id": process.env.project_id,
-      "private_key_id": process.env.private_key_id,
-      "private_key": process.env.private_key,
-      "client_email": process.env.client_email,
-      "client_id": process.env.client_id,
-      "auth_uri": process.env.auth_uri,
-      "token_uri": process.env.token_uri,
-      "auth_provider_x509_cert_url": process.env.auth_provider_x509_cert_url,
-      "client_x509_cert_url": process.env.client_x509_cert_url,
-  }
-}
+// if (process.env.NODE_ENV === 'production') {
+//   creds = {
+//       "type": process.env.type,
+//       "project_id": process.env.project_id,
+//       "private_key_id": process.env.private_key_id,
+//       "private_key": process.env.private_key,
+//       "client_email": process.env.client_email,
+//       "client_id": process.env.client_id,
+//       "auth_uri": process.env.auth_uri,
+//       "token_uri": process.env.token_uri,
+//       "auth_provider_x509_cert_url": process.env.auth_provider_x509_cert_url,
+//       "client_x509_cert_url": process.env.client_x509_cert_url,
+//   }
+// }
 
-app.use(express.static('./client/dist'));
+// app.use(express.static('./client/dist'));
+app.use('/.netlify/functions/index', router);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 async function getData(pIndex, tIndex, sIndex, callback) {
   const doc = new GoogleSpreadsheet('1uyoyCE2tc3tnPO7GeVGUUbjCR2-IwDu-HSodzpYV5og');
-  await doc.useServiceAccountAuth(creds);
-  await doc.loadInfo(); // loads document properties and worksheet
+  try {
+    await doc.useServiceAccountAuth(creds);
+    await doc.loadInfo(); // loads document properties and worksheet
+    console.log(`Google Sheet Title: ${doc.title}`);
 
-  console.log(`Google Sheet Title: ${doc.title}`);
+    const allRows = {
+      player: await doc.sheetsByIndex[pIndex].getRows(),
+      team: await doc.sheetsByIndex[tIndex].getRows(),
+      schedule: await doc.sheetsByIndex[sIndex].getRows(),
+    }
 
+    callback(allRows);
+  } catch (err) {
+    console.log(err);
+  }
   /*
   const sheet = doc.sheetsByIndex[index]; // or use doc.sheetsById[id]
   console.log(`Sheet Title: ${sheet.title}`);
@@ -45,14 +59,6 @@ async function getData(pIndex, tIndex, sIndex, callback) {
 
   const rows = await sheet.getRows();
   */
-
-  const allRows = {
-    player: await doc.sheetsByIndex[pIndex].getRows(),
-    team: await doc.sheetsByIndex[tIndex].getRows(),
-    schedule: await doc.sheetsByIndex[sIndex].getRows(),
-  }
-
-  callback(allRows);
 }
 
 const getSheetData = (pIndex, tIndex, sIndex, callback) => {
@@ -61,7 +67,7 @@ const getSheetData = (pIndex, tIndex, sIndex, callback) => {
   });
 };
 
-app.get('/api/all', (req, res) => {
+router.get('/', (req, res) => {
   getSheetData(3, 4, 2, (data) => {
     let playerData = [];
     let player = {};
@@ -126,6 +132,10 @@ app.get('/api/all', (req, res) => {
   })
 });
 
-app.listen(port, () => {
-  console.log(`app listening on port ${port}`);
-});
+
+
+// app.listen(port, () => {
+//   console.log(`app listening on port ${port}`);
+// });
+
+module.exports.handler = serverless(app);
