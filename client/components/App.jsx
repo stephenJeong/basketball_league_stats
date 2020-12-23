@@ -47,7 +47,7 @@ class App extends React.Component {
   }
 
   getAllStats() {
-    axios.get('/')
+    axios.get('/.netlify/functions/server/api/data')
       .then((res) => {
         // set player data
         const sortedPlayers = this.reverseSortPlayers(res.data[0].players);

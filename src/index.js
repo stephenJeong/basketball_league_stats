@@ -67,7 +67,7 @@ const getSheetData = (pIndex, tIndex, sIndex, callback) => {
   });
 };
 
-router.get('/', (req, res) => {
+router.get('/api/data', (req, res) => {
   getSheetData(3, 4, 2, (data) => {
     let playerData = [];
     let player = {};
