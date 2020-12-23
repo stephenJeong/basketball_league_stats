@@ -159,7 +159,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('testing')
     let { playerStats, leaders, teamStats, sortedTeams, selectedTeam, teamSchedule, allSchedule, nextSunday } = this.state;
 
     const loading = () => {
