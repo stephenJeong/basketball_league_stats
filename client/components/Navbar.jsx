@@ -33,24 +33,24 @@ class NavBar extends React.Component {
               onClick={() => {this.toggleClass('home')}}>
                 Home
             </Link>
-            <Link
+            {/* <Link
               to="/schedule"
               className={this.state.activePage === 'schedule' ? 'navBar-links-clicked navBar-item': 'navBar-item'}
               onClick={() => {this.toggleClass('schedule')}}>
               Schedule
-            </Link>
+            </Link> */}
             <Link
               to="/teams"
               className={this.state.activePage === 'teams' ? 'navBar-links-clicked navBar-item': 'navBar-item'}
               onClick={() => {this.toggleClass('teams')}}>
               Teams
             </Link>
-            <Link
+            {/* <Link
               to="/standings"
               className={this.state.activePage === 'standings' ? 'navBar-links-clicked navBar-item': 'navBar-item'}
               onClick={() => {this.toggleClass('standings')}}>
               Standings
-            </Link>
+            </Link> */}
             <Link
               to="/players"
               className={this.state.activePage === 'players' ? 'navBar-links-clicked navBar-item': 'navBar-item'}
