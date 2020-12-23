@@ -50,6 +50,7 @@ class App extends React.Component {
     axios.get('/.netlify/functions/server/api/data')
       .then((res) => {
         // set player data
+        console.log('res.data in client:',res.data)
         const sortedPlayers = this.reverseSortPlayers(res.data[0].players);
         const leaders = sortedPlayers.splice(0, 5);
 
