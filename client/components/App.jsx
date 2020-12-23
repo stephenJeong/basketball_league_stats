@@ -47,7 +47,7 @@ class App extends React.Component {
   }
 
   getAllStats() {
-    axios.get('/.netlify/functions/server/api/data')
+    axios.get('/.netlify/functions/index/api/data')
       .then((res) => {
         // set player data
         console.log('res.data in client:',res.data)
