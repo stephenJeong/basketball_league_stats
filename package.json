@@ -38,7 +38,7 @@
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "google-spreadsheet": "^3.0.10",
-    "moment": "^2.26.0",
+    "moment": "^2.29.4",
     "mysql": "^2.18.1",
     "netlify-cli": "^2.69.11",
     "nodemon": "^2.0.2",
