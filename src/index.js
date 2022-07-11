@@ -37,7 +37,7 @@ app.use(cors());
 console.log("checking express server");
 
 async function getData(pIndex, tIndex, sIndex, callback) {
-  const doc = new GoogleSpreadsheet('1uyoyCE2tc3tnPO7GeVGUUbjCR2-IwDu-HSodzpYV5og');
+  const doc = new GoogleSpreadsheet('1OzVUhs0pXNiIJFZ3I4kA611b9ZcUSFT9');
   try {
     await doc.useServiceAccountAuth(creds);
     await doc.loadInfo(); // loads document properties and worksheet
