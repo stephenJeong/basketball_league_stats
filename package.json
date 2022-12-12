@@ -35,7 +35,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "encoding": "^0.1.13",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "faker": "^4.1.0",
     "google-spreadsheet": "^3.0.10",
     "moment": "^2.26.0",
